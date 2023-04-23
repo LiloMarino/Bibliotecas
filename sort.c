@@ -16,10 +16,13 @@ void SelectionSortInt(int V[], int n)
                 minimo = j;
             }
         }
+        if (V[minimo] != V[i])
+        {
         /*Troca*/
         aux = V[minimo];
         V[minimo] = V[i];
         V[i] = aux;
+        }
     }
 }
 
@@ -37,10 +40,13 @@ void SelectionSortChar(char V[], int n)
                 minimo = j;
             }
         }
+        if (minimo != i)
+        {
         /*Troca*/
         aux = V[minimo];
         V[minimo] = V[i];
         V[i] = aux;
+        }
     }
 }
 
