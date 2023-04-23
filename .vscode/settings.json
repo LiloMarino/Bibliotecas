@@ -1,0 +1,14 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "efficiency.h": "c",
+        "stddef.h": "c"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/lilo/Faculdade/EstruturadeDados/Bibliotecas/output",
+            "binaryPath": "/home/lilo/Faculdade/EstruturadeDados/Bibliotecas/output/teste",
+            "binaryArgs": []
+        }
+    ],
+}
