@@ -1,18 +1,20 @@
+#ifndef GERADORES_H
+#define GERADORES_H
+
 /**
  * @file geradores.h
  * @brief Biblioteca de funções geradoras de dados aleatórios
  */
 
-#ifndef GERADORES_H
-#define GERADORES_H
+#include <stdio.h>
 
 /**
  * @brief Gera uma string de caracteres aleatórios.
  * @param n Tamanho da string gerada.
  * @param string Vetor onde a string será armazenada.
- * @return void
+ *
  */
-void GerarString(int n,char string[]);
+void GerarString(int n, char string[]);
 
 /**
  * @brief Gera um número aleatório do tipo float ou int.
@@ -29,17 +31,17 @@ float GerarNumero(int min, int max, char tipo[]);
  * @param max Valor máximo que pode ser gerado.
  * @param v Vetor onde os valores serão armazenados.
  * @param n Tamanho do vetor gerado.
- * @return void
+ *
  */
-void GerarVetorInt(int min, int max,int v[],int n);
+void GerarVetorInt(int min, int max, int v[], int n);
 
 /**
  * @brief Escreve um vetor de inteiros na saída padrão.
  * @param V Vetor a ser impresso.
  * @param linha Tamanho do vetor.
- * @return void
+ *
  */
-void EscreveV(int V[],int linha);
+void EscreveV(int V[], int linha);
 
 /**
  * @brief Gera uma matriz de caracteres aleatórios e salva em um arquivo.
@@ -47,9 +49,9 @@ void EscreveV(int V[],int linha);
  * @param linha Número de linhas da matriz gerada.
  * @param coluna Número de colunas da matriz gerada.
  * @param nomearq Nome do arquivo onde a matriz será salva.
- * @return void
+ *
  */
-void GerarMatrizChar(char caps[],int linha,int coluna,char nomearq[]);
+void GerarMatrizChar(char caps[], int linha, int coluna, char nomearq[]);
 
 /**
  * @brief Gera uma matriz de inteiros aleatórios e salva em um arquivo.
@@ -58,9 +60,9 @@ void GerarMatrizChar(char caps[],int linha,int coluna,char nomearq[]);
  * @param linha Número de linhas da matriz gerada.
  * @param coluna Número de colunas da matriz gerada.
  * @param nomearq Nome do arquivo onde a matriz será salva.
- * @return void
+ *
  */
-void GerarMatrizInt(int min,int max,int linha,int coluna,char nomearq[]);
+void GerarMatrizInt(int min, int max, int linha, int coluna, char nomearq[]);
 
 /**
  * @brief Gera uma matriz esparsa de inteiros aleatórios e salva em um arquivo.
@@ -69,43 +71,59 @@ void GerarMatrizInt(int min,int max,int linha,int coluna,char nomearq[]);
  * @param linha Número de linhas da matriz gerada.
  * @param coluna Número de colunas da matriz gerada.
  * @param nomearq Nome do arquivo onde a matriz será salva.
- * @return void
+ *
  */
-void GerarMatrizEsparsa(int min,int max,int linha,int coluna,char nomearq[]);
+void GerarMatrizEsparsa(int min, int max, int linha, int coluna, char nomearq[]);
 
 /**
  * @brief Função que lê uma matriz de caracteres de um arquivo e imprime a matriz na tela.
- * 
+ *
  * @param nomearq Nome do arquivo a ser lido.
  * @param linha Número de linhas da matriz.
  * @param coluna Número de colunas da matriz.
- * 
+ *
  * @note A matriz é alocada dinamicamente.
- * 
+ *
  */
-void LerMatrizChar(char nomearq[],int linha,int coluna);
+void LerMatrizChar(char nomearq[], int linha, int coluna);
 
 /**
  * @brief Função que lê uma matriz de inteiros de um arquivo e imprime a matriz na tela.
- * 
+ *
  * @param nomearq Nome do arquivo a ser lido.
  * @param linha Número de linhas da matriz.
  * @param coluna Número de colunas da matriz.
- * 
+ *
  * @note A matriz é alocada dinamicamente.
- * 
+ *
  */
-void LerMatrizInt(char nomearq[],int linha,int coluna);
+void LerMatrizInt(char nomearq[], int linha, int coluna);
 
 /**
  * @brief Função que libera a memória alocada para uma matriz dinâmica.
- * 
+ *
  * @param mat Matriz dinâmica a ser liberada.
  * @param linha Número de linhas da matriz.
- * 
+ *
  * @note A matriz deve ter sido alocada dinamicamente usando malloc() ou calloc().
- * 
+ *
  */
 void LiberarMatriz(void **mat, int linha);
+
+/**
+ * @brief Cria um arquivo de log com o nome especificado.
+ *
+ * @param nome Nome base para o arquivo de log.
+ * @return Ponteiro para o arquivo de log criado.
+ *
+ * @note A função adiciona a extensão ".txt" ao nome do arquivo e verifica se já existe
+ * um arquivo com o mesmo nome. Se já existir, adiciona um número ao nome para evitar
+ * sobrescrever o arquivo existente.
+ *
+ * @warning Se ocorrer um erro ao criar o arquivo, a função imprime uma mensagem de erro
+ * na tela e retorna um ponteiro nulo.
+ *
+ */
+FILE *CriaLog(char nome[]);
 
 #endif
