@@ -27,10 +27,10 @@ int main()
     printf("\n");
 
     // Ordena o vetor char
-    contarOperacoesBasicas(&SelectionSortChar, vetor_char, nc);
+    SelectionSortChar(vetor_char,nc);
     
     // Ordena o vetor int
-    contarOperacoesBasicas(&SelectionSortInt, vetor_int, ni);
+    SelectionSortInt(vetor_int,ni);
 
     // Imprime o vetor char ordenado
     printf("Vetor char ordenado: ");

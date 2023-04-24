@@ -5,3 +5,5 @@ output/main.o
 output/sort.d
 output/sort.o
 output/teste
+output/geradores.d
+output/geradores.o
