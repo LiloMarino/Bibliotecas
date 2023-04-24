@@ -27,16 +27,4 @@ void calcularMemoriaUtilizada();
  */
 void calcularTempoCPU();
 
-/**
- * @brief Conta o número de operações básicas executadas por um trecho de código.
- *
- * Esta função conta o número de operações básicas (adições, subtrações, multiplicações, divisões,
- * comparações e atribuições) que são executadas por um trecho de código. O número de operações é
- * retornado como um long long.
- *
- * @param f A função a ser avaliada.
- *
- */
-void contarOperacoesBasicas(void (*f)());
-
 #endif

@@ -27,14 +27,10 @@ int main()
     printf("\n");
 
     // Ordena o vetor char
-    iniciarTempo();
-    calcularTempoCPU();
-    finalizarTempo();
+    contarOperacoesBasicas(&SelectionSortChar, vetor_char, nc);
     
     // Ordena o vetor int
-    iniciarTempo();
-    calcularTempoCPU();
-    finalizarTempo();
+    contarOperacoesBasicas(&SelectionSortInt, vetor_int, ni);
 
     // Imprime o vetor char ordenado
     printf("Vetor char ordenado: ");
