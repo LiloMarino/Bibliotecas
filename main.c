@@ -28,12 +28,12 @@ int main()
 
     // Ordena o vetor char
     iniciarTempo();
-    SelectionSortChar(vetor_char,nc);
+    calcularTempoCPU();
     finalizarTempo();
     
     // Ordena o vetor int
     iniciarTempo();
-    SelectionSortInt(vetor_int,ni);
+    calcularTempoCPU();
     finalizarTempo();
 
     // Imprime o vetor char ordenado

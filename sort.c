@@ -6,48 +6,55 @@ void SelectionSortInt(int V[], int n)
 {
     int i, j, minimo;
     int aux;
-    for (i = 0; i < n - 2; i++)
+    for (i = 0; i <= n - 2; i++)
     {
         minimo = i;
-        for (j = i + 1; j < n - 1; j++)
+        for (j = i + 1; j <= n - 1; j++)
         {
             if (V[j] < V[minimo])
             {
                 minimo = j;
             }
         }
-        if (V[minimo] != V[i])
-        {
-        /*Troca*/
-        aux = V[minimo];
-        V[minimo] = V[i];
-        V[i] = aux;
-        }
+
+
+            /*Troca*/
+            aux = V[minimo];
+            V[minimo] = V[i];
+            V[i] = aux;
+
     }
+}
+
+void BubbleSortInt(int V[], int n)
+{
 }
 
 void SelectionSortChar(char V[], int n)
 {
     int i, j, minimo;
     char aux;
-    for (i = 0; i < n - 2; i++)
+    for (i = 0; i <= n - 2; i++)
     {
         minimo = i;
-        for (j = i + 1; j < n - 1; j++)
+        for (j = i + 1; j <= n - 1; j++)
         {
             if (V[j] < V[minimo])
             {
                 minimo = j;
             }
         }
-        if (minimo != i)
-        {
-        /*Troca*/
-        aux = V[minimo];
-        V[minimo] = V[i];
-        V[i] = aux;
-        }
+
+            /*Troca*/
+            aux = V[minimo];
+            V[minimo] = V[i];
+            V[i] = aux;
+
     }
+}
+
+void BubbleSortChar(char V[], int n)
+{
 }
 
 void Swap(Sort A, Sort B, size_t size)
