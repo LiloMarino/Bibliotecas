@@ -97,4 +97,15 @@ void LerMatrizChar(char nomearq[],int linha,int coluna);
  */
 void LerMatrizInt(char nomearq[],int linha,int coluna);
 
+/**
+ * @brief Função que libera a memória alocada para uma matriz dinâmica.
+ * 
+ * @param mat Matriz dinâmica a ser liberada.
+ * @param linha Número de linhas da matriz.
+ * 
+ * @note A matriz deve ter sido alocada dinamicamente usando malloc() ou calloc().
+ * 
+ */
+void LiberarMatriz(void **mat, int linha);
+
 #endif

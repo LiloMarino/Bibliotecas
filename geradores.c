@@ -195,3 +195,12 @@ void LerMatrizInt(char nomearq[],int linha,int coluna)
     fclose(matriz);
 }
 
+void LiberarMatriz(void **mat, int linha)
+{
+    int i;
+    for (i = 0; i < linha; i++)
+    {
+        free(mat[i]); //libera o vetor da linha
+    }
+    free(mat); //libera o vetor de ponteiros "linhas"
+}
