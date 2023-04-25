@@ -222,6 +222,7 @@ FILE *CriaLog(char nome[])
         sprintf(nomearq, "%s-%d.txt", nome, n);
         vrfy = fopen(nomearq, "r");
     }
+
     // Cria o arquivo com o nome gerado
     FILE *arq = fopen(nomearq, "w");
     if (arq == NULL)
@@ -229,6 +230,5 @@ FILE *CriaLog(char nome[])
         printf("Erro ao criar arquivo de log!\n");
     }
 
-    // Desaloca a memória alocada
     return arq;
 }

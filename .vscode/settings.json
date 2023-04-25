@@ -3,7 +3,8 @@
     "files.associations": {
         "efficiency.h": "c",
         "stddef.h": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "algorithm": "c"
     },
     "makefile.launchConfigurations": [
         {
