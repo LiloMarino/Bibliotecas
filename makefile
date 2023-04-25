@@ -6,9 +6,11 @@ FONTES = main.c sort.c efficiency.c geradores.c
 
 # Pasta de saída
 OUTPUT = output/
+LOGS = $(OUTPUT)logs/
 
 # Cria a pasta de saída se ela não existir
 $(shell mkdir -p $(OUTPUT))
+$(shell mkdir -p $(LOGS))
 
 # Arquivos objeto na pasta de saída
 OBJETOS = $(addprefix $(OUTPUT), $(FONTES:.c=.o))
@@ -34,9 +36,10 @@ $(OUTPUT)%.o: %.c
 # Regra para limpar os arquivos objeto e o executável
 clean:
 	rm -rf $(OUTPUT) $(PROJETO)
+	rm -rf $(LOGS)
 
 # Regra para executar o programa com o Valgrind
 run:
-	valgrind --leak-check=full $(OUTPUT)$(PROJETO)
+	cd $(OUTPUT) && valgrind --leak-check=full ./$(PROJETO)
 
 .PHONY: all clean

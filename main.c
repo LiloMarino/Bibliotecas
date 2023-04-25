@@ -12,6 +12,7 @@ int main()
     int vetor_int[MAX_LENGHT]; 
     int nc = MAX_LENGHT;
     int ni = MAX_LENGHT;
+    FILE* log = CriaLog("logs/log");
 
     GerarVetorInt(0,100,vetor_int,ni);
     GerarString(nc,vetor_char);
@@ -35,12 +36,12 @@ int main()
     // Ordena o vetor char
     iniciarTempo();
     SelectionSortChar(vetor_char,nc);
-    finalizarTempo();
+    fprintf(log,"Char:\nTempo total de execução: %lf segundos.\n",finalizarTempo());
     
     // Ordena o vetor int
     iniciarTempo();
     SelectionSortInt(vetor_int,ni);
-    finalizarTempo();
+    fprintf(log,"Int:\nTempo total de execução: %lf segundos.\n",finalizarTempo());
 
     // Imprime o vetor char ordenado
     printf("Vetor char ordenado: ");
@@ -57,6 +58,6 @@ int main()
         printf("%d ", vetor_int[i]);
     }
     printf("\n");
-
+    fclose(log);
     return 0;
 }

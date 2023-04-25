@@ -33,6 +33,16 @@ void HeapSortChar(char V[], int n);
 
 void MergeSortChar(char V[], int n);
 
+/**
+ * @brief Troca os valores de dois elementos de um array ou de qualquer tipo de dado.
+ *
+ * @param A Ponteiro para o primeiro elemento.
+ * @param B Ponteiro para o segundo elemento.
+ * @param size Tamanho dos elementos em bytes, pode ser obtido pela função sizeof().
+ *
+ * @note É importante garantir que os ponteiros passados como argumentos apontem para o tipo de dado correto.
+ * Caso contrário, a função Swap pode produzir comportamentos inesperados ou resultar em erros de compilação.
+ */
 void Swap(Sort A, Sort B, size_t size);
 
 #endif

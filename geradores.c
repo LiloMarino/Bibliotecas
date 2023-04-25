@@ -19,6 +19,7 @@ void GerarString(int n, char string[])
     {
         string[i] = stringa[i];
     }
+    free(stringa);
     return;
 }
 
@@ -207,17 +208,20 @@ void LiberarMatriz(void **mat, int linha)
 
 FILE *CriaLog(char nome[])
 {
-    char nomearq[150];
+    // Aloca memória para o nome do arquivo
+    char nomearq[strlen(nome) + 10];
     int n = 1;
     sprintf(nomearq, "%s.txt", nome);
 
     // Verifica se o arquivo já existe
-    while (fopen(nomearq, "r") != NULL)
+    FILE *vrfy = fopen(nomearq, "r");
+    while (vrfy != NULL)
     {
+        fclose(vrfy);
         n++;
         sprintf(nomearq, "%s-%d.txt", nome, n);
+        vrfy = fopen(nomearq, "r");
     }
-
     // Cria o arquivo com o nome gerado
     FILE *arq = fopen(nomearq, "w");
     if (arq == NULL)
@@ -225,5 +229,6 @@ FILE *CriaLog(char nome[])
         printf("Erro ao criar arquivo de log!\n");
     }
 
+    // Desaloca a memória alocada
     return arq;
 }

@@ -118,10 +118,10 @@ void LiberarMatriz(void **mat, int linha);
  *
  * @note A função adiciona a extensão ".txt" ao nome do arquivo e verifica se já existe
  * um arquivo com o mesmo nome. Se já existir, adiciona um número ao nome para evitar
- * sobrescrever o arquivo existente.
+ * sobrescrever o arquivo existente. É necessário fechar o arquivo com fclose().
  *
  * @warning Se ocorrer um erro ao criar o arquivo, a função imprime uma mensagem de erro
- * na tela e retorna um ponteiro nulo.
+ * na tela e retorna um ponteiro nulo. 
  *
  */
 FILE *CriaLog(char nome[]);
