@@ -7,7 +7,7 @@
 
 #define MAX_LENGHT 300
 
-void ImprimeVetorChar(char vetor_char[], int nc)
+void ImprimeVetorChar(const char vetor_char[], int nc)
 {
     // Imprime o vetor char
     for (int i = 0; i < nc; i++)
@@ -29,7 +29,7 @@ void ImprimeVetorInt(int vetor_int[], int ni)
 
 int main()
 {
-    char vetor_char[MAX_LENGHT];
+    char vetor_char[MAX_LENGHT] = "\0";
     char Copy[MAX_LENGHT];
     FILE *log = CriaLog("logs/log");
 
