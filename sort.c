@@ -40,7 +40,7 @@ void BubbleSortInt(int V[], int n)
     do
     {
         trocado = false;
-        for (int i = 0; i <= n - 2; i++)
+        for (int i = 0; i < n - 1; i++)
         {
             if (V[i] > V[i + 1])
             {
@@ -49,7 +49,7 @@ void BubbleSortInt(int V[], int n)
             }
         }
         n = n - 1;
-    } while (!trocado);
+    } while (trocado);
 }
 
 void InsertionSortInt(int V[], int n)
@@ -104,7 +104,7 @@ void QuickSortInt(int V[], int i, int f)
     }
 
     /* Adquire o Pivo */
-    pivo = (i+f)/2;
+    pivo = V[(i+f)/2];
 
     /* Particiona */
     int e,d;
@@ -112,7 +112,7 @@ void QuickSortInt(int V[], int i, int f)
     d = f;
     while (e < d)
     {
-        while ((d > i) && (V[d] > pivo))
+        while ((d >= i) && (V[d] > pivo))
         {
             d--;
         }
@@ -203,7 +203,7 @@ void BubbleSortChar(char V[], int n)
     do
     {
         trocado = false;
-        for (int i = 0; i <= n - 2; i++)
+        for (int i = 0; i < n - 1; i++)
         {
             if (V[i] > V[i + 1])
             {
@@ -212,7 +212,7 @@ void BubbleSortChar(char V[], int n)
             }
         }
         n = n - 1;
-    } while (!trocado);
+    } while (trocado);
 }
 
 void InsertionSortChar(char V[], int n)
@@ -260,14 +260,15 @@ void ShellSortChar(char V[], int n)
 
 void QuickSortChar(char V[], int i, int f)
 {
-    int pivo, j;
+    int j;
+    char pivo;
     if (i == f)
     {
         return;
     }
-    
+
     /* Adquire o Pivo */
-    pivo = (i+f)/2;
+    pivo = V[(i+f)/2];
 
     /* Particiona */
     int e,d;
@@ -275,7 +276,7 @@ void QuickSortChar(char V[], int i, int f)
     d = f;
     while (e < d)
     {
-        while ((d > i) && (V[d] > pivo))
+        while ((d >= i) && (V[d] > pivo))
         {
             d--;
         }

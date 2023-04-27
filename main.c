@@ -5,7 +5,7 @@
 #include "efficiency.h"
 #include "geradores.h"
 
-#define MAX_LENGHT 10000
+#define MAX_LENGHT 300
 
 void ImprimeVetorChar(char vetor_char[], int nc)
 {
@@ -31,17 +31,14 @@ int main()
 {
     char vetor_char[MAX_LENGHT];
     char Copy[MAX_LENGHT];
-    int vetor_int[MAX_LENGHT];
-    int nc = MAX_LENGHT;
-    int ni = MAX_LENGHT;
     FILE *log = CriaLog("logs/log");
 
     // GerarVetorInt(0,100,vetor_int,ni);
-    GerarString(nc, vetor_char);
+    GerarString(MAX_LENGHT, vetor_char);
 
     // Imprime o vetor char desordenado
     printf("Vetor char desordenado: ");
-    ImprimeVetorChar(vetor_char, nc);
+    ImprimeVetorChar(vetor_char, MAX_LENGHT);
 
     // Imprime o vetor int desordenado
     /*printf("Vetor int desordenado: ");
@@ -50,60 +47,53 @@ int main()
     // Ordena o vetor char
     strcpy(Copy, vetor_char);
     iniciarTempo();
-    SelectionSortChar(Copy, nc);
+    SelectionSortChar(Copy, MAX_LENGHT);
     fprintf(log, "SelectionSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
     printf("Vetor char ordenado: ");
-    ImprimeVetorChar(Copy, nc);
+    ImprimeVetorChar(Copy, MAX_LENGHT);
 
     strcpy(Copy, vetor_char);
     iniciarTempo();
-    TiredBubbleSortChar(Copy, nc);
+    TiredBubbleSortChar(Copy, MAX_LENGHT);
     fprintf(log, "TiredBubbleSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
     printf("Vetor char ordenado: ");
-    ImprimeVetorChar(Copy, nc);
+    ImprimeVetorChar(Copy, MAX_LENGHT);
 
     strcpy(Copy, vetor_char);
     iniciarTempo();
-    BubbleSortChar(Copy, nc);
+    BubbleSortChar(Copy, MAX_LENGHT);
     fprintf(log, "BubbleSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
     printf("Vetor char ordenado: ");
-    ImprimeVetorChar(Copy, nc);
+    ImprimeVetorChar(Copy, MAX_LENGHT);
 
     strcpy(Copy, vetor_char);
     iniciarTempo();
-    InsertionSortChar(Copy, nc);
+    InsertionSortChar(Copy, MAX_LENGHT);
     fprintf(log, "InsertionSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
     printf("Vetor char ordenado: ");
-    ImprimeVetorChar(Copy, nc);
+    ImprimeVetorChar(Copy, MAX_LENGHT);
 
     strcpy(Copy, vetor_char);
     iniciarTempo();
-    ShellSortChar(Copy, nc);
+    ShellSortChar(Copy, MAX_LENGHT);
     fprintf(log, "ShellSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
     printf("Vetor char ordenado: ");
-    ImprimeVetorChar(Copy, nc);
-
-    /*strcpy(Copy, vetor_char);
-    iniciarTempo();
-    QuickSortChar(Copy,0,nc);
-    fprintf(log, "QuickSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
-    printf("Vetor char ordenado: ");
-    ImprimeVetorChar(Copy, nc);
+    ImprimeVetorChar(Copy, MAX_LENGHT);
 
     strcpy(Copy, vetor_char);
     iniciarTempo();
-    HeapSortChar(Copy,nc);
+    QuickSortChar(Copy, 0, MAX_LENGHT);
+    fprintf(log, "QuickSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
+    printf("Vetor char ordenado: ");
+    ImprimeVetorChar(Copy, MAX_LENGHT);
+
+    strcpy(Copy, vetor_char);
+    iniciarTempo();
+    HeapSortChar(Copy, MAX_LENGHT);
     fprintf(log, "HeapSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
     printf("Vetor char ordenado: ");
-    ImprimeVetorChar(Copy, nc);*/
+    ImprimeVetorChar(Copy, MAX_LENGHT);
 
-    // Ordena o vetor int
-    /*iniciarTempo();
-    SelectionSortInt(vetor_int,ni);
-    fprintf(log,"Int:\nTempo total de execução: %lf segundos.\n",finalizarTempo());
-    printf("Vetor int ordenado: ");
-    ImprimeVetorInt(vetor_int,ni);*/
-    
     fclose(log);
     return 0;
 }
