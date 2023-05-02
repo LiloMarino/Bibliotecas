@@ -94,6 +94,13 @@ int main()
     printf("Vetor char ordenado: ");
     ImprimeVetorChar(Copy, MAX_LENGHT);
 
+    strcpy(Copy, vetor_char);
+    iniciarTempo();
+    MergeSortChar(Copy, 0, MAX_LENGHT);
+    fprintf(log, "MergeSortChar:\nTempo total de execução: %lf segundos.\n", finalizarTempo());
+    printf("Vetor char ordenado: ");
+    ImprimeVetorChar(Copy, MAX_LENGHT);
+
     fclose(log);
     return 0;
 }
