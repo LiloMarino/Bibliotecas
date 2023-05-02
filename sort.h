@@ -15,7 +15,7 @@ void InsertionSortInt(int V[], int n);
 
 void ShellSortInt(int V[], int n);
 
-void QuickSortInt(int V[], int i, int f);
+void QuickSortInt(int V[], int n);
 
 void HeapSortInt(int V[], int n);
 
@@ -31,11 +31,11 @@ void InsertionSortChar(char V[], int n);
 
 void ShellSortChar(char V[], int n);
 
-void QuickSortChar(char V[], int i, int f);
+void QuickSortChar(char V[], int n);
 
 void HeapSortChar(char V[], int n);
 
-void MergeSortChar(char V[], int n);
+void MergeSortChar(char V[], int inicio, int fim);
 
 /**
  * @brief Troca os valores de dois elementos de um array ou de qualquer tipo de dado.
