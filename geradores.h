@@ -149,4 +149,11 @@ void LiberarMatriz(void **mat, int linha);
  */
 FILE *CriaLog(char nome[]);
 
+/**
+ * @brief Mostra uma barra de progresso baseada na % obtida pela divisão i/total
+ * @param i Quantidade já feita
+ * @param total Quantidade total a ser feita
+ */
+void BarraDeProgresso(int i, int total);
+
 #endif
