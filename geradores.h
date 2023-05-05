@@ -52,12 +52,18 @@ int GerarNumeroInt(int min, int max);
 void GerarVetorInt(int min, int max, int v[], int n);
 
 /**
- * @brief Escreve um vetor de inteiros na saída padrão.
- * @param V Vetor a ser impresso.
- * @param linha Tamanho do vetor.
- *
+ * @brief Printa na tela o vetor
+ * @param vetor_char Vetor de caracteres
+ * @param nc Tamanho do vetor de char
  */
-void EscreveV(int V[], int linha);
+void ImprimeVetorChar(const char vetor_char[], const int nc);
+
+/**
+ * @brief Printa na tela o vetor
+ * @param vetor_int Vetor de inteiros
+ * @param ni Tamanho do vetor de inteiros
+ */
+void ImprimeVetorInt(const int vetor_int[], const int ni);
 
 /**
  * @brief Gera uma matriz de caracteres aleatórios e salva em um arquivo.

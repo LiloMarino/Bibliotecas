@@ -4,11 +4,11 @@
 #include <string.h>
 #include <time.h>
 
-
 unsigned int seed;
 
-void InicializaRand() {
-    seed = (unsigned int) time(NULL);
+void InicializaRand()
+{
+    seed = (unsigned int)time(NULL);
     srand(seed);
 }
 
@@ -23,12 +23,14 @@ void GerarString(int n, char string[])
     return;
 }
 
-float GerarNumeroFloat(int min, int max) {
-    float n = (float) rand() / RAND_MAX;
+float GerarNumeroFloat(int min, int max)
+{
+    float n = (float)rand() / RAND_MAX;
     return min + n * (max - min);
 }
 
-int GerarNumeroInt(int min, int max) {
+int GerarNumeroInt(int min, int max)
+{
     int n = rand();
     return min + n % (max - min + 1);
 }
@@ -36,21 +38,30 @@ int GerarNumeroInt(int min, int max) {
 void GerarVetorInt(int min, int max, int v[], int n)
 {
     int i;
-    srand(time(NULL));
     for (i = 0; i < n; i++)
     {
-        v[i] = min + rand() % (max - min + 1);
+        v[i] = min + (int)((float)rand() / RAND_MAX * (max - min + 1));
     }
-    return;
 }
 
-void EscreveV(int V[], int linha)
+void ImprimeVetorChar(const char vetor_char[], const int nc)
 {
-    int i;
-    for (i = 0; i < linha; i++)
+    // Imprime o vetor char
+    for (int i = 0; i < nc; i++)
     {
-        printf("%d ", V[i]);
+        printf("%c ", vetor_char[i]);
     }
+    printf("\n");
+}
+
+void ImprimeVetorInt(const int vetor_int[], const int ni)
+{
+    // Imprime o vetor int
+    for (int i = 0; i < ni; i++)
+    {
+        printf("%d ", vetor_int[i]);
+    }
+    printf("\n");
 }
 
 void GerarMatrizChar(char caps[], int linha, int coluna, char nomearq[])
