@@ -4,36 +4,33 @@
 #include <string.h>
 #include <time.h>
 
+
+unsigned int seed;
+
+void InicializaRand() {
+    seed = (unsigned int) time(NULL);
+    srand(seed);
+}
+
 void GerarString(int n, char string[])
 {
     int i;
-    char *stringa;
-    srand(time(NULL));
-    stringa = malloc(n * sizeof(char));
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n - 1; i++)
     {
-        stringa[i] = 65 + rand() % 26;
+        string[i] = 65 + rand() % 26;
     }
-    stringa[n - 1] = '\0';
-    for (i = 0; i < n; i++)
-    {
-        string[i] = stringa[i];
-    }
-    free(stringa);
+    string[n - 1] = '\0';
     return;
 }
 
-float GerarNumero(int min, int max, char tipo[])
-{
-    float n;
-    srand(time(NULL));
-    n = (min + rand() % (max - min + 1)) / 100.0;
-    if (strcmp(tipo, "int") == 0)
-    {
-        n = n * 100;
-        return (int)n;
-    }
-    return n;
+float GerarNumeroFloat(int min, int max) {
+    float n = (float) rand() / RAND_MAX;
+    return min + n * (max - min);
+}
+
+int GerarNumeroInt(int min, int max) {
+    int n = rand();
+    return min + n % (max - min + 1);
 }
 
 void GerarVetorInt(int min, int max, int v[], int n)

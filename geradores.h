@@ -9,6 +9,13 @@
 #include <stdio.h>
 
 /**
+ * @brief Inicializa a semente do gerador de números aleatórios com o valor do tempo atual
+ * A função InicializaRand() utiliza a função time(NULL) para obter o tempo atual em segundos desde 1º de janeiro de 1970.
+ * Esse valor é utilizado como semente para a função srand(), que inicializa o gerador de números aleatórios do programa.
+ */
+void InicializaRand();
+
+/**
  * @brief Gera uma string de caracteres aleatórios.
  * @param n Tamanho da string gerada.
  * @param string Vetor onde a string será armazenada.
@@ -17,13 +24,22 @@
 void GerarString(int n, char string[]);
 
 /**
- * @brief Gera um número aleatório do tipo float ou int.
- * @param min Valor mínimo que pode ser gerado.
- * @param max Valor máximo que pode ser gerado.
- * @param tipo Tipo do número gerado, pode ser "float" ou "int".
- * @return float Retorna o número gerado.
+ * @brief Gera um número float aleatório dentro do intervalo determinado
+ * @param min Menor número que pode ser gerado
+ * @param max Maior número que pode ser gerado
+ * @return Retorna o número gerado
+ *
  */
-float GerarNumero(int min, int max, char tipo[]);
+float GerarNumeroFloat(int min, int max);
+
+/**
+ * @brief Gera um número int aleatório dentro do intervalo determinado
+ * @param min Menor número que pode ser gerado
+ * @param max Maior número que pode ser gerado
+ * @return Retorna o número gerado
+ *
+ */
+int GerarNumeroInt(int min, int max);
 
 /**
  * @brief Gera um vetor de inteiros aleatórios.
@@ -121,7 +137,7 @@ void LiberarMatriz(void **mat, int linha);
  * sobrescrever o arquivo existente. É necessário fechar o arquivo com fclose().
  *
  * @warning Se ocorrer um erro ao criar o arquivo, a função imprime uma mensagem de erro
- * na tela e retorna um ponteiro nulo. 
+ * na tela e retorna um ponteiro nulo.
  *
  */
 FILE *CriaLog(char nome[]);
