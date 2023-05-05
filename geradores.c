@@ -70,7 +70,6 @@ void GerarMatrizChar(char caps[], int linha, int coluna, char nomearq[])
     char Mm[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     char M[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     char m[] = "abcdefghijklmnopqrstuvwxyz";
-    srand(time(NULL));
     FILE *matriz;
     matriz = fopen(nomearq, "w");
     if (strcmp(caps, "Mm") == 0)
@@ -112,14 +111,14 @@ void GerarMatrizChar(char caps[], int linha, int coluna, char nomearq[])
 void GerarMatrizInt(int min, int max, int linha, int coluna, char nomearq[])
 {
     int i, j;
-    srand(time(NULL));
     FILE *matriz;
     matriz = fopen(nomearq, "w");
     for (i = 0; i < linha; i++)
     {
         for (j = 0; j < coluna; j++)
         {
-            fprintf(matriz, "%d ", min + rand() % (max - min + 1));
+            int valor = min + rand() % (max - min + 1);
+            fprintf(matriz, "%d ", valor);
         }
         fprintf(matriz, "\n");
     }
@@ -129,7 +128,6 @@ void GerarMatrizInt(int min, int max, int linha, int coluna, char nomearq[])
 void GerarMatrizEsparsa(int min, int max, int linha, int coluna, char nomearq[])
 {
     int i, j;
-    srand(time(NULL));
     FILE *matriz;
     matriz = fopen(nomearq, "w");
     for (i = 0; i < linha; i++)

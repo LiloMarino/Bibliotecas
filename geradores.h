@@ -4,6 +4,7 @@
 /**
  * @file geradores.h
  * @brief Biblioteca de funções geradoras de dados aleatórios
+ * @warning É necessário utilizar InicializaRand() antes de usar qualquer função de geração aleatória
  */
 
 #include <stdio.h>
