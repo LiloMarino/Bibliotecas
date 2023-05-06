@@ -212,12 +212,12 @@ void LiberarMatriz(void **mat, int linha)
     free(mat); // libera o vetor de ponteiros "linhas"
 }
 
-FILE *CriaLog(char nome[])
+FILE *CriaLog(char nome[], char ext[])
 {
     // Aloca memória para o nome do arquivo
-    char nomearq[strlen(nome) + 10];
+    char nomearq[strlen(nome) + 10 + strlen(ext)];
     int n = 1;
-    sprintf(nomearq, "%s.txt", nome);
+    sprintf(nomearq, "%s.%s", nome, ext);
 
     // Verifica se o arquivo já existe
     FILE *vrfy = fopen(nomearq, "r");
@@ -225,7 +225,7 @@ FILE *CriaLog(char nome[])
     {
         fclose(vrfy);
         n++;
-        sprintf(nomearq, "%s-%d.txt", nome, n);
+        sprintf(nomearq, "%s-%d.%s", nome, n, ext);
         vrfy = fopen(nomearq, "r");
     }
 
@@ -242,25 +242,29 @@ FILE *CriaLog(char nome[])
 void BarraDeProgresso(int i, int total)
 {
     // Calcula a porcentagem de conclusão
-    float porcentagem = (float) i / total * 100;
-    
+    float porcentagem = (float)i / total * 100;
+
     // Calcula a largura da barra
     int largura = 100;
-    
+
     // Calcula o número de caracteres '=' na barra
-    int num_igual = (int) (porcentagem / 100 * largura);
-    
+    int num_igual = (int)(porcentagem / 100 * largura);
+
     // Imprime a barra
     printf("[");
-    for (int j = 0; j < largura; j++) {
-        if (j < num_igual) {
+    for (int j = 0; j < largura; j++)
+    {
+        if (j < num_igual)
+        {
             printf("=");
-        } else {
+        }
+        else
+        {
             printf(" ");
         }
     }
     printf("] %3.0f%%\r", porcentagem);
-    
+
     // Limpa o buffer de saída para atualizar a barra
     fflush(stdout);
 }

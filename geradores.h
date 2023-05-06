@@ -137,9 +137,10 @@ void LiberarMatriz(void **mat, int linha);
  * @brief Cria um arquivo de log com o nome especificado.
  *
  * @param nome Nome base para o arquivo de log.
+ * @param ext Extensão do arquivo sem o .
  * @return Ponteiro para o arquivo de log criado.
  *
- * @note A função adiciona a extensão ".txt" ao nome do arquivo e verifica se já existe
+ * @note A função adiciona a extensão ao nome do arquivo e verifica se já existe
  * um arquivo com o mesmo nome. Se já existir, adiciona um número ao nome para evitar
  * sobrescrever o arquivo existente. É necessário fechar o arquivo com fclose().
  *
@@ -147,7 +148,7 @@ void LiberarMatriz(void **mat, int linha);
  * na tela e retorna um ponteiro nulo.
  *
  */
-FILE *CriaLog(char nome[]);
+FILE *CriaLog(char nome[], char ext[]);
 
 /**
  * @brief Mostra uma barra de progresso baseada na % obtida pela divisão i/total
