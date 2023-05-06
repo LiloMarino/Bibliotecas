@@ -17,16 +17,9 @@ bool leLinha(ArqCmds ac, char **buf)
         free(*buf);
         *buf = NULL;
     }
-    char linha[300];
-    linha[0] = '\0';
-    if (!feof(ac))
+    char linha[300] = "\0";
+    if (fgets(linha, 300, ac))
     {
-        fscanf(ac, "%299[^\n]", linha);
-        fgetc(ac);
-        if(linha[0] == '\0')
-        {
-            return false;
-        }
         *buf = malloc((strlen(linha) + 1)*sizeof(char));
         strcpy(*buf, linha);
         return true;
