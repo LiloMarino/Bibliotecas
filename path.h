@@ -110,6 +110,7 @@ void normalizePath(char *path, char **normPath);
 /*Concatena os nomes do Geo e do Qry usados na execução do programa*/
 char *ConcatenaNomes(char *NomeGeo, char *NomeQry);
 
+/*Recebe os argumentos e interpreta a entrada*/
 void ArgumentosDeComando(char **pathEntry, char **arqGeo, char **pathExit, char **arqQry, int argc, char **argv);
 
 #endif
