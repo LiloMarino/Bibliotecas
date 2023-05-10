@@ -238,33 +238,3 @@ FILE *CriaLog(char nome[], char ext[])
 
     return arq;
 }
-
-void BarraDeProgresso(int i, int total)
-{
-    // Calcula a porcentagem de conclusão
-    float porcentagem = (float)i / total * 100;
-
-    // Calcula a largura da barra
-    int largura = 100;
-
-    // Calcula o número de caracteres '=' na barra
-    int num_igual = (int)(porcentagem / 100 * largura);
-
-    // Imprime a barra
-    printf("[");
-    for (int j = 0; j < largura; j++)
-    {
-        if (j < num_igual)
-        {
-            printf("=");
-        }
-        else
-        {
-            printf(" ");
-        }
-    }
-    printf("] %3.0f%%\r", porcentagem);
-
-    // Limpa o buffer de saída para atualizar a barra
-    fflush(stdout);
-}
