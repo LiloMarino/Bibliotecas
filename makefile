@@ -2,7 +2,7 @@
 PROJETO = teste
 
 # Arquivos fonte
-FONTES = teste.c efficiency.c geradores.c
+FONTES = teste.c efficiency.c utilities.c
 
 # Pasta de saída
 OUTPUT = output/

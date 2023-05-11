@@ -1,9 +1,10 @@
 #ifndef UTILITIES_H
 #define UTILITIES_H
 
-#ifndef PI
+#include <time.h>
+#include <stdbool.h>
+
 #define PI 3.14159265358979323846
-#endif
 
 /**
  * @brief Recebe um valor em Graus e o retorna em Radianos
@@ -46,5 +47,13 @@ bool VerificaPonto(float Axsup, float Px, float Axinf, float Aysup, float Py, fl
  * @param total Quantidade total a ser feita
  */
 void BarraDeProgresso(int i, int total);
+
+/**
+ * @brief Mostra uma barra de progresso baseada na % obtida pela divisão i/total e é necessário antes do loop inicializar o tempo
+ * @param i Quantidade já feita
+ * @param total Quantidade total a ser feita
+ * @param inicio Pode ser gerado a partir de time_t inicio = time(NULL);
+ */
+void BarraDeProgressoETA(int i, int total, time_t inicio);
 
 #endif
