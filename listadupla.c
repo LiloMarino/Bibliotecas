@@ -303,6 +303,7 @@ void killLst(Lista L)
     ((ListaInfo *)L)->inicio = NULL;
     ((ListaInfo *)L)->final = NULL;
     ((ListaInfo *)L)->length = 0;
+    free(L);
 }
 
 /*
