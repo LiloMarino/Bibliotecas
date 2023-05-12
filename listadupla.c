@@ -137,7 +137,7 @@ Item popLst(Lista L)
 
 void removeLst(Lista L, Posic p)
 {
-    ListaDupla *rmv, *aux;
+    ListaDupla *rmv;
     rmv = (ListaDupla *)p;
 
     // Verifica se é o primeiro elemento da lista
@@ -147,7 +147,6 @@ void removeLst(Lista L, Posic p)
         {
             ((ListaInfo *)L)->inicio = rmv->prox;
             rmv->prox->ant = rmv->ant;
-            aux = rmv->prox;
         }
         else
         {
@@ -158,7 +157,6 @@ void removeLst(Lista L, Posic p)
     {
         rmv->prox->ant = rmv->ant;
         rmv->ant->prox = rmv->prox;
-        aux = rmv->prox;
     }
 
     // Se for o último elemento da lista
