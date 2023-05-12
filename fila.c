@@ -6,7 +6,7 @@ typedef struct Fil
 {
 
    int inicio, fim, size;
-   data dados[TAM_FILA - 1];
+   data dados[TAM_FILA];
 
 } _fila;
 
