@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define TAM_FILA 16
-
 typedef struct Fil
 {
 

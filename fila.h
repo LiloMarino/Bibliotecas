@@ -2,11 +2,13 @@
 #define FILA_
 
 #include <stdbool.h>
+#define TAM_FILA 10000
+
 
 typedef void *data;
 typedef void *Fila;
 
-// cria uma fila circular estatica com 15 espaços
+// cria uma fila circular estatica com TAM_FILA espaços
 Fila createQueue();
 
 // checa se a fila esta vazia
