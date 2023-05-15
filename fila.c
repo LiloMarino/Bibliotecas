@@ -31,7 +31,7 @@ bool isQueueEmpty(Fila X)
 {
    _fila *aux = (_fila *)X;
 
-   if ((aux->inicio == aux->fim))
+   if (aux->inicio == aux->fim)
       return true;
    else
       return false;
