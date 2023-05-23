@@ -1,5 +1,6 @@
 #include "utilities.h"
 #include <stdio.h>
+#include <math.h>
 
 double GrausParaRadianos(double Graus)
 {
@@ -21,6 +22,12 @@ bool VerificaIntervalo(float Inicio, float P, float Fim)
 bool VerificaPonto(float Axsup, float Px, float Axinf, float Aysup, float Py, float Ayinf)
 {
     return (Axsup <= Px && Px <= Axinf && Ayinf <= Py && Py <= Aysup);
+}
+
+double Distancia2Pontos(double x1, double y1, double x2, double y2)
+{
+    double distancia = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    return distancia;
 }
 
 void BarraDeProgresso(int i, int total)

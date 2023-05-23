@@ -42,6 +42,16 @@ bool VerificaIntervalo(float Inicio, float P, float Fim);
 bool VerificaPonto(float Axsup, float Px, float Axinf, float Aysup, float Py, float Ayinf);
 
 /**
+ * @brief Calcula a distância entre 2 pontos
+ * @param x1 Coordenada x do ponto 1
+ * @param y1 Coordenada y do ponto 1
+ * @param x2 Coordenada x do ponto 2
+ * @param y2 Coordenada y do ponto 2
+ * @return Retorna a distância entre o ponto 1 e o ponto 2
+ */
+double Distancia2Pontos(double x1, double y1, double x2, double y2);
+
+/**
  * @brief Mostra uma barra de progresso baseada na % obtida pela divisão i/total
  * @param i Quantidade já feita
  * @param total Quantidade total a ser feita
