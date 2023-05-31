@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../def.h"
+
 
 ArqSvg abreEscritaSvg(char *fn)
 {
@@ -10,7 +12,7 @@ ArqSvg abreEscritaSvg(char *fn)
     {
         return NULL;
     }
-    fprintf(fsvg, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%%\" height=\"100%%\" viewBox=\"-100 -100 500 500\">\n");
+    fprintf(fsvg, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%%\" height=\"100%%\" viewBox=\"%d %d %d %d\">\n",SIZE_X1_Y1,SIZE_X1_Y1,SIZE_X2_Y2,SIZE_X2_Y2);
     return fsvg;
 }
 
