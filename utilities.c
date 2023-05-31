@@ -87,7 +87,7 @@ void BarraDeProgressoETA(int i, int total, time_t inicio)
     }
 
     // Formata o tempo restante em uma string legível
-    char str_tempo_restante[20];
+    char str_tempo_restante[30];
     if (ETA < 60)
     {
         sprintf(str_tempo_restante, "%ld segundos", ETA);
