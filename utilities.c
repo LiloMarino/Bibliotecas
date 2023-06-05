@@ -14,12 +14,12 @@ double RadianosParaGraus(double Radianos)
     return Graus;
 }
 
-bool VerificaIntervalo(float Inicio, float P, float Fim)
+bool VerificaIntervalo(double Inicio, double P, double Fim)
 {
     return (Inicio <= P) && (P <= Fim);
 }
 
-bool VerificaPonto(float Axsup, float Px, float Axinf, float Aysup, float Py, float Ayinf)
+bool VerificaPonto(double Axsup, double Px, double Axinf, double Aysup, double Py, double Ayinf)
 {
     return (Axsup <= Px && Px <= Axinf && Ayinf <= Py && Py <= Aysup);
 }
