@@ -27,7 +27,7 @@ double RadianosParaGraus(double Radianos);
  * @param Fim Valor final
  * @return Retorna verdadeiro se pertencer e falso caso não pertença
  */
-bool VerificaIntervalo(float Inicio, float P, float Fim);
+bool VerificaIntervalo(double Inicio, double P, double Fim);
 
 /**
  * @brief Verifica se um ponto pertence ou não a uma Área Retangular definida por Asup e Ainf
@@ -39,7 +39,7 @@ bool VerificaIntervalo(float Inicio, float P, float Fim);
  * @param Ayinf Coordenada y da Aresta Inferior Direita
  * @return Retorna verdadeiro se o ponto pertence a área e falso caso não pertença
  */
-bool VerificaPonto(float Axsup, float Px, float Axinf, float Aysup, float Py, float Ayinf);
+bool VerificaPonto(double Axsup, double Px, double Axinf, double Aysup, double Py, double Ayinf);
 
 /**
  * @brief Calcula a distância entre 2 pontos
