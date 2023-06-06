@@ -21,7 +21,7 @@ double GrausParaRadianos(double Graus);
 double RadianosParaGraus(double Radianos);
 
 /**
- * @brief Verifica se um ponto está num determinado intervalo delimitado por 2 valores
+ * @brief Verifica se um ponto está num determinado intervalo delimitado por 2 valores, ou seja se Inicio <= P <= Fim
  * @param Inicio Valor inicial
  * @param P Valor a ser verificado a pertencente do intervalo
  * @param Fim Valor final
@@ -30,7 +30,8 @@ double RadianosParaGraus(double Radianos);
 bool VerificaIntervalo(double Inicio, double P, double Fim);
 
 /**
- * @brief Verifica se um ponto pertence ou não a uma Área Retangular definida por Asup e Ainf
+ * @brief Verifica se um ponto pertence ou não a uma Área Retangular definida por Asup e Ainf, ou seja se 
+ * Axsup <= Px <= Axinf e Ayinf <= Py <= Aysup
  * @param Axsup Coordenada x da Aresta Superior Esquerda
  * @param Px Coordenada x do ponto P
  * @param Axinf Coordenada x da Aresta Inferior Direita
