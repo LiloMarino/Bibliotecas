@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "learquivo.h"
 
-void splitPath(char *fullPath, char **path, char **nomeArq, char **extArq)
+void splitPath(const char *fullPath, char **path, char **nomeArq, char **extArq)
 {
     if (*path != NULL)
     {
@@ -29,7 +29,7 @@ void splitPath(char *fullPath, char **path, char **nomeArq, char **extArq)
     else
     {
         int tamanhoPath = strlen(fullPath) - strlen(ultimabarra) + 1;
-        *path = malloc((tamanhoPath) * sizeof(char));
+        *path = malloc((tamanhoPath + 1) * sizeof(char));
         strncpy(*path, fullPath, tamanhoPath);
         (*path)[tamanhoPath] = '\0';
     }
@@ -70,7 +70,7 @@ void splitPath(char *fullPath, char **path, char **nomeArq, char **extArq)
     }
 }
 
-void joinFilePath(char *path, char *fileName, char **fullPath)
+void joinFilePath(const char *path, const char *fileName, char **fullPath)
 {
     if (path == NULL || fileName == NULL)
     {
@@ -196,22 +196,35 @@ void normalizePath(char *path, char **normPath)
     (*normPath)[pathLength] = '\0';
 }
 
-char *ConcatenaNomes(char *NomeGeo, char *NomeQry)
+char *RemoveExtensao(const char *fileName)
 {
-    char *nome = calloc(strlen(NomeGeo) + 1, sizeof(char));
-    strcpy(nome, NomeGeo);
-    strtok(nome, ".");
-    strcat(nome, "-");
+    char *fileName1 = NULL, *path = NULL, *ext = NULL;
 
+    splitPath(fileName, &path, &fileName1, &ext);
+    free(path);
+    free(ext);
+    return fileName1;
+}
+
+char *ConcatenaNomes(const char *NomeGeo, const char *NomeQry)
+{
     if (NomeQry != NULL)
     {
+        char *nome = calloc(strlen(NomeGeo) + strlen(NomeQry) + 1, sizeof(char));
+        strcpy(nome, NomeGeo);
+        strtok(nome, ".");
+        strcat(nome, "-");
         char *Qry = calloc(strlen(NomeQry) + 1, sizeof(char));
         strcpy(Qry, NomeQry);
         strtok(Qry, ".");
         strcat(nome, Qry);
+        free(Qry);
+        return nome;
     }
-
-    return nome;
+    else
+    {
+        return NULL;
+    }
 }
 
 void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, int argc, char **argv)

@@ -3,20 +3,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../def.h"
-
+#include "geradores.h"
 
 ArqSvg abreEscritaSvg(char *fn)
 {
-    ArqSvg fsvg = fopen(fn, "w");
+
+    ArqSvg fsvg = CriaLog(fn, "svg");
+
     if (fsvg == NULL)
     {
         return NULL;
     }
-    fprintf(fsvg, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%%\" height=\"100%%\" viewBox=\"%d %d %d %d\">\n",SIZE_X1_Y1,SIZE_X1_Y1,SIZE_X2_Y2,SIZE_X2_Y2);
+    fprintf(fsvg, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%%\" height=\"100%%\" viewBox=\"%d %d %d %d\">\n", SIZE_X1_Y1, SIZE_X1_Y1, SIZE_X2_Y2, SIZE_X2_Y2);
     return fsvg;
 }
 
-void preparaDecoracao(char **deco, int decoLen, char *corBorda, char *corPreenchimento, char *larguraBorda, double transparencia, double transparenciaPreenchimento, double transparenciaBorda,double pontilhadoBorda)
+void preparaDecoracao(char **deco, int decoLen, char *corBorda, char *corPreenchimento, char *larguraBorda, double transparencia, double transparenciaPreenchimento, double transparenciaBorda, double pontilhadoBorda)
 {
     char decoracao[250];
     decoracao[0] = '\0';
@@ -62,7 +64,7 @@ void preparaDecoracao(char **deco, int decoLen, char *corBorda, char *corPreench
         strcat(decoracao, strTransparenciaBorda);
         strcat(decoracao, "\" ");
     }
-    if(pontilhadoBorda >= 0)
+    if (pontilhadoBorda >= 0)
     {
         char strPontilhadoBorda[20];
         sprintf(strPontilhadoBorda, "%lf", pontilhadoBorda);

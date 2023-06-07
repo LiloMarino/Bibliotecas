@@ -40,10 +40,7 @@
     "ccc.ddd.txt"     =>   ""          "ccc.ddd"  ".txt"
     "ccc"             =>   ""          "ccc"      ""
  */
-void splitPath(char *fullPath,
-               char **path,
-               char **nomeArq,
-               char **extArq);
+void splitPath(const char *fullPath, char **path, char **nomeArq, char **extArq);
 
 /*
   Dado um caminho (path) e um nome de arquivo (possivelmente, com sua extensao),
@@ -55,7 +52,7 @@ void splitPath(char *fullPath,
    ""           "c.txt"  =>  "c.txt"
    "aaa/bbb"    "c"      =>  "aaa/bbb/c"
  */
-void joinFilePath(char *path, char *fileName, char **fullPath);
+void joinFilePath(const char *path, const char *fileName, char **fullPath);
 
 /*
    Semelhante a joinFilePath, porem, a extensao do arquivo e´ informado explicitamente
@@ -106,10 +103,31 @@ void getPath(char *fullPath, char **path);
  */
 void normalizePath(char *path, char **normPath);
 
-/*Concatena os nomes do Geo e do Qry usados na execução do programa*/
-char *ConcatenaNomes(char *NomeGeo, char *NomeQry);
+/**
+ * @brief Remove a extensão de um arquivo por exemplo arq.geo -> arq
+ * @param fileName Nome do arquivo com a extensão
+ * @return Retorna o nome sem a extensão
+ */
+char *RemoveExtensao(const char *fileName);
 
-/*Recebe os argumentos e interpreta a entrada*/
+/**
+ * @brief Concatena NomeGeo com NomeQry ficando separando-os pelo caractere "-" ficando NomeGeo-NomeQry
+ * @param NomeGeo Nome do arquivo .geo
+ * @param NomeQry Nome do arquivo .qry
+ * @return Retorna o nome concatenado dos 2
+ */
+char *ConcatenaNomes(const char *NomeGeo, const char *NomeQry);
+
+/**
+ * @brief Recebe os argumentos e interpreta a entrada
+ * @param PathInput Local onde contém os arquivos a serem lidos
+ * @param PathOutput Local onde será criado os arquivos de saída
+ * @param nomeGeo Nome do arquivo .geo
+ * @param nomeQry Nome do arquivo .qry
+ * @param numSetor Número de setores da árvore radial
+ * @param argc Argc
+ * @param argv Argv
+ */
 void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, int argc, char **argv);
 
 #endif
