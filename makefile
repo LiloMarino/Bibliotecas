@@ -2,7 +2,7 @@
 PROJETO = teste
 
 # Arquivos fonte
-FONTES = teste.c efficiency.c utilities.c
+FONTES = teste.c path.c learquivo.c
 
 # Pasta de saída
 OUTPUT = output/

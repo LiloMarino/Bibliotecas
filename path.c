@@ -1,7 +1,7 @@
-#include "path.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "path.h"
 #include "learquivo.h"
 
 void splitPath(const char *fullPath, char **path, char **nomeArq, char **extArq)
@@ -11,62 +11,55 @@ void splitPath(const char *fullPath, char **path, char **nomeArq, char **extArq)
         free(*path);
         *path = NULL;
     }
+
     if (*nomeArq != NULL)
     {
         free(*nomeArq);
         *nomeArq = NULL;
     }
+
     if (*extArq != NULL)
     {
         free(*extArq);
         *extArq = NULL;
     }
+
     char *ultimabarra = strrchr(fullPath, '/');
-    if (ultimabarra == NULL)
+    char *ultimoponto = strrchr(fullPath, '.');
+
+    if (ultimabarra != NULL)
     {
-        *path = my_strdup("");
-    }
-    else
-    {
-        int tamanhoPath = strlen(fullPath) - strlen(ultimabarra) + 1;
+        int tamanhoPath = ultimabarra - fullPath + 1;
         *path = malloc((tamanhoPath + 1) * sizeof(char));
         strncpy(*path, fullPath, tamanhoPath);
         (*path)[tamanhoPath] = '\0';
     }
-    char *ultimoponto = strrchr(fullPath, '.');
-    if (ultimoponto == NULL)
+    else
     {
-        *extArq = my_strdup("");
-        if (ultimabarra == NULL)
-        {
-            *nomeArq = malloc((strlen(fullPath) + 1) * sizeof(char));
-            strcpy(*nomeArq, fullPath);
-        }
-        else
-        {
-            *nomeArq = malloc((strlen(ultimabarra) + 1) * sizeof(char));
-            strncpy(*nomeArq, ultimabarra + 1, strlen(fullPath) - (ultimabarra - fullPath) - 1);
-            (*nomeArq)[strlen(ultimabarra) - 1] = '\0';
-        }
+        *path = my_strdup("");
+    }
+
+    if (ultimoponto != NULL)
+    {
+        *nomeArq = malloc((ultimoponto - ultimabarra) * sizeof(char));
+        strncpy(*nomeArq, ultimabarra + 1, ultimoponto - ultimabarra - 1);
+        (*nomeArq)[ultimoponto - ultimabarra - 1] = '\0';
+
+        *extArq = malloc((strlen(ultimoponto) + 1) * sizeof(char));
+        strcpy(*extArq, ultimoponto);
     }
     else
     {
-        if (ultimabarra == NULL)
+        if (ultimabarra != NULL)
         {
-            *nomeArq = malloc((strlen(fullPath) - strlen(ultimoponto) + 1) * sizeof(char));
-            strncpy(*nomeArq, fullPath, strlen(fullPath) - strlen(ultimoponto));
-            (*nomeArq)[strlen(fullPath) - strlen(ultimoponto)] = '\0';
-            *extArq = malloc((strlen(ultimoponto) + 1) * sizeof(char));
-            strcpy(*extArq, ultimoponto);
+            *nomeArq = malloc((strlen(ultimabarra) + 1) * sizeof(char));
+            strcpy(*nomeArq, ultimabarra + 1);
         }
         else
         {
-            *nomeArq = malloc((strlen(ultimabarra) - strlen(ultimoponto) + 1) * sizeof(char));
-            strncpy(*nomeArq, ultimabarra + 1, strlen(ultimabarra) - strlen(ultimoponto));
-            (*nomeArq)[strlen(ultimoponto) + 1] = '\0';
-            *extArq = malloc((strlen(ultimoponto) + 2) * sizeof(char));
-            strcpy(*extArq, ultimoponto);
+            *nomeArq = my_strdup("");
         }
+        *extArq = my_strdup("");
     }
 }
 
@@ -77,69 +70,80 @@ void joinFilePath(const char *path, const char *fileName, char **fullPath)
         return;
     }
 
-    if (strcmp("", path) != 0)
-    {
-        if (path[strlen(path) - 1] == '/')
-        {
-            *fullPath = malloc((strlen(path) + strlen(fileName) + 1) * sizeof(char));
-            sprintf(*fullPath, "%s%s", path, fileName);
-        }
-        else
-        {
-            *fullPath = malloc((strlen(path) + strlen(fileName) + 2) * sizeof(char));
-            sprintf(*fullPath, "%s/%s", path, fileName);
-        }
-    }
-    else
-    {
-        *fullPath = malloc((strlen(fileName) + 1) * sizeof(char));
-        sprintf(*fullPath, "%s", fileName);
-    }
-}
-
-void joinAll(char *path, char *fileName, char *ext, char **fullPath)
-{
-    if (path == NULL || ext == NULL || fileName == NULL)
-    {
-        return;
-    }
     if (*fullPath != NULL)
     {
         free(*fullPath);
         *fullPath = NULL;
     }
+
+    size_t pathLength = strlen(path);
+    size_t fileNameLength = strlen(fileName);
+    size_t fullPathLength = pathLength + fileNameLength + 2; // +2 para o caractere '/' e o terminador nulo
+
+    *fullPath = malloc(fullPathLength * sizeof(char));
+
+    if (pathLength > 0 && path[pathLength - 1] == '/')
+    {
+        snprintf(*fullPath, fullPathLength, "%s%s", path, fileName);
+    }
+    else
+    {
+        snprintf(*fullPath, fullPathLength, "%s/%s", path, fileName);
+    }
+}
+
+void joinAll(const char *path, const char *fileName, const char *ext, char **fullPath)
+{
+    if (path == NULL || ext == NULL || fileName == NULL)
+    {
+        return;
+    }
+
+    if (*fullPath != NULL)
+    {
+        free(*fullPath);
+        *fullPath = NULL;
+    }
+
+    int pathLength = strlen(path);
+    int fileNameLength = strlen(fileName);
+    int extLength = strlen(ext);
+    int fullPathLength = pathLength + fileNameLength + extLength + 2;
+
+    *fullPath = malloc(fullPathLength * sizeof(char));
+
     if (strcmp("", path) != 0)
     {
-        if (path[strlen(path) - 1] == '/')
+        if (path[pathLength - 1] == '/')
         {
-            *fullPath = malloc((strlen(path) + strlen(fileName) + strlen(ext) + 1) * sizeof(char));
             sprintf(*fullPath, "%s%s%s", path, fileName, ext);
         }
         else
         {
-            *fullPath = malloc((strlen(path) + strlen(fileName) + strlen(ext) + 2) * sizeof(char));
             sprintf(*fullPath, "%s/%s%s", path, fileName, ext);
         }
     }
     else
     {
-        *fullPath = malloc((strlen(fileName) + strlen(ext) + 1) * sizeof(char));
         sprintf(*fullPath, "%s%s", fileName, ext);
     }
 }
 
-void getFileName(char *fullPath, char **fileName)
+void getFileName(const char *fullPath, char **fileName)
 {
     if (fullPath == NULL)
     {
         return;
     }
+
     if (*fileName != NULL)
     {
         free(*fileName);
         *fileName = NULL;
     }
+
     char *ultimabarra = strrchr(fullPath, '/');
+
     if (ultimabarra == NULL)
     {
         *fileName = my_strdup(fullPath);
@@ -150,48 +154,55 @@ void getFileName(char *fullPath, char **fileName)
     }
 }
 
-void getPath(char *fullPath, char **path)
+void getPath(const char *fullPath, char **path)
 {
     if (fullPath == NULL)
     {
         return;
     }
+
     if (*path != NULL)
     {
         free(*path);
         *path = NULL;
     }
+
     char *ultimabarra = strrchr(fullPath, '/');
-    if (ultimabarra == NULL)
-    {
-        *path = my_strdup("");
-    }
-    else
+
+    if (ultimabarra != NULL)
     {
         int pathLength = ultimabarra - fullPath;
         *path = malloc((pathLength + 1) * sizeof(char));
         strncpy(*path, fullPath, pathLength);
         (*path)[pathLength] = '\0';
     }
+    else
+    {
+        *path = my_strdup("");
+    }
 }
 
-void normalizePath(char *path, char **normPath)
+void normalizePath(const char *path, char **normPath)
 {
     if (path == NULL)
     {
         return;
     }
+
     if (*normPath != NULL)
     {
         free(*normPath);
         *normPath = NULL;
     }
+
     int pathLength = strlen(path);
+
     if (path[pathLength - 1] == '/')
     {
         pathLength--;
     }
-    *normPath = malloc((pathLength + 1) * sizeof(char));
+
+    *normPath = realloc(*normPath, (pathLength + 1) * sizeof(char));
     strncpy(*normPath, path, pathLength);
     (*normPath)[pathLength] = '\0';
 }

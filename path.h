@@ -65,7 +65,7 @@ void joinFilePath(const char *path, const char *fileName, char **fullPath);
    ""         "ccc"     ".txt"  => "ccc.txt"
    "aaa/bbb"  "ccc"     ""      => "aaa/bbb/ccc"
  */
-void joinAll(char *path, char *fileName, char *ext, char **fullPath);
+void joinAll(const char *path, const char *fileName, const char *ext, char **fullPath);
 
 /*
     Dado um caminho completo (fullPath), copia em fileName o nome do arquivo
@@ -79,7 +79,7 @@ void joinAll(char *path, char *fileName, char *ext, char **fullPath);
     "cc"              => "cc"
     ".txt"            => ".txt"
  */
-void getFileName(char *fullPath, char **fileName);
+void getFileName(const char *fullPath, char **fileName);
 
 /*
    Dado um caminho completo, retorna seu respectivo path.
@@ -90,7 +90,7 @@ void getFileName(char *fullPath, char **fileName);
    "ccc.txt"          => ""
    "aaa/bbb/ccc"      => "aaa/bbb"
  */
-void getPath(char *fullPath, char **path);
+void getPath(const char *fullPath, char **path);
 
 /*
    Dado um caminho (path), (supostamente) sem nome de arquivo,
@@ -101,7 +101,7 @@ void getPath(char *fullPath, char **path);
    "aa/bb/cc"   => "aa/bb/cc"
    "aa/bb/cc/"  => "aa/bb/cc"
  */
-void normalizePath(char *path, char **normPath);
+void normalizePath(const char *path, char **normPath);
 
 /**
  * @brief Remove a extensão de um arquivo por exemplo arq.geo -> arq

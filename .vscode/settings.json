@@ -1,10 +1,12 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
+        "*.c": "c",
         "efficiency.h": "c",
         "stddef.h": "c",
         "cmath": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "path.h": "c"
     },
     "makefile.launchConfigurations": [
         {
