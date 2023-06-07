@@ -202,19 +202,19 @@ char *ConcatenaNomes(char *NomeGeo, char *NomeQry)
     strcpy(nome, NomeGeo);
     strtok(nome, ".");
     strcat(nome, "-");
-    
-    if(NomeQry != NULL)
+
+    if (NomeQry != NULL)
     {
-    char *Qry = calloc(strlen(NomeQry) + 1, sizeof(char));
-    strcpy(Qry, NomeQry);
-    strtok(Qry, ".");
-    strcat(nome, Qry);
+        char *Qry = calloc(strlen(NomeQry) + 1, sizeof(char));
+        strcpy(Qry, NomeQry);
+        strtok(Qry, ".");
+        strcat(nome, Qry);
     }
 
     return nome;
 }
 
-void ArgumentosDeComando(char **PathInput, char **arqGeo, char **PathOutput, char **arqQry, int argc, char **argv)
+void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
     {
@@ -224,7 +224,7 @@ void ArgumentosDeComando(char **PathInput, char **arqGeo, char **PathOutput, cha
         }
         else if (strcmp("-f", argv[i]) == 0 && i + 1 < argc)
         {
-            *arqGeo = argv[++i];
+            *nomeGeo = argv[++i];
         }
         else if (strcmp("-o", argv[i]) == 0 && i + 1 < argc)
         {
@@ -232,7 +232,11 @@ void ArgumentosDeComando(char **PathInput, char **arqGeo, char **PathOutput, cha
         }
         else if (strcmp("-q", argv[i]) == 0 && i + 1 < argc)
         {
-            *arqQry = argv[++i];
+            *nomeQry = argv[++i];
+        }
+        else if (strcmp("-ns", argv[i]) == 0 && i + 1 < argc)
+        {
+            *numSetor = argv[++i];
         }
     }
 }

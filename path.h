@@ -1,7 +1,6 @@
 #ifndef PATH__
 #define PATH__
 
-
 /*
    Este modulo prove funcoes para manipulacao de caminhos de arquivos.
    Basicamente, exitem 2 tipos de funcoes:
@@ -111,6 +110,6 @@ void normalizePath(char *path, char **normPath);
 char *ConcatenaNomes(char *NomeGeo, char *NomeQry);
 
 /*Recebe os argumentos e interpreta a entrada*/
-void ArgumentosDeComando(char **pathEntry, char **arqGeo, char **pathExit, char **arqQry, int argc, char **argv);
+void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, int argc, char **argv);
 
 #endif
