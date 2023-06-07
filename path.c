@@ -45,8 +45,7 @@ void splitPath(const char *fullPath, char **path, char **nomeArq, char **extArq)
         strncpy(*nomeArq, ultimabarra + 1, ultimoponto - ultimabarra - 1);
         (*nomeArq)[ultimoponto - ultimabarra - 1] = '\0';
 
-        *extArq = malloc((strlen(ultimoponto) + 1) * sizeof(char));
-        strcpy(*extArq, ultimoponto);
+        *extArq = my_strdup(ultimoponto);
     }
     else
     {
@@ -209,12 +208,30 @@ void normalizePath(const char *path, char **normPath)
 
 char *RemoveExtensao(const char *fileName)
 {
-    char *fileName1 = NULL, *path = NULL, *ext = NULL;
+    char *nomeArq = NULL;
 
-    splitPath(fileName, &path, &fileName1, &ext);
-    free(path);
-    free(ext);
-    return fileName1;
+    // Procura a última ocorrência do caractere '.'
+    const char *ultimoponto = strrchr(fileName, '.');
+
+    if (ultimoponto != NULL)
+    {
+        // Calcula o tamanho do nome do arquivo sem a extensão
+        size_t nomeArqLen = ultimoponto - fileName;
+        
+        // Aloca memória para o novo nome do arquivo
+        nomeArq = malloc((nomeArqLen + 1) * sizeof(char));
+        
+        // Copia o nome do arquivo sem a extensão
+        strncpy(nomeArq, fileName, nomeArqLen);
+        nomeArq[nomeArqLen] = '\0';
+    }
+    else
+    {
+        // Se não há ponto, o nome do arquivo é o mesmo que o original
+        nomeArq = my_strdup(fileName);
+    }
+
+    return nomeArq;
 }
 
 char *ConcatenaNomes(const char *NomeGeo, const char *NomeQry)
