@@ -7,8 +7,10 @@
 
 ArqSvg abreEscritaSvg(char *fn)
 {
-
-    ArqSvg fsvg = fopen(fn, "w");
+    char nomeSVG[strlen(fn) + 4];
+    strcpy(nomeSVG,fn);
+    strcat(nomeSVG,".svg");
+    ArqSvg fsvg = fopen(nomeSVG, "w");
 
     if (fsvg == NULL)
     {
