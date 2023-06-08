@@ -8,7 +8,7 @@
 ArqSvg abreEscritaSvg(char *fn)
 {
 
-    ArqSvg fsvg = CriaLog(fn, "svg");
+    ArqSvg fsvg = fopen(fn, "w");
 
     if (fsvg == NULL)
     {
