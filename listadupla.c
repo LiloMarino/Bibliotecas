@@ -378,6 +378,7 @@ Lista map(Lista L, Apply f)
         Item item = getIteratorNext(L, it);
         insertLst(novaLista, f(item));
     }
+    killIterator(it);
     return novaLista;
 }
 
@@ -396,6 +397,7 @@ Lista filter(Lista L, Check f, Posic p)
             insertLst(novaLista, item);
         }
     }
+    killIterator(it);
     return novaLista;
 }
 
@@ -409,4 +411,5 @@ void fold(Lista L, ApplyClosure f, Clausura c)
         Item item = getIteratorNext(L, it);
         f(item, c);
     }
+    killIterator(it);
 }

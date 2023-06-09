@@ -104,11 +104,12 @@ void GerarMatrizEsparsa(int min, int max, int linha, int coluna, char nomearq[])
  * @param nomearq Nome do arquivo a ser lido.
  * @param linha Número de linhas da matriz.
  * @param coluna Número de colunas da matriz.
+ * @return Retorna a matriz alocada dinamicamente
  *
  * @note A matriz é alocada dinamicamente.
  *
  */
-void LerMatrizChar(char nomearq[], int linha, int coluna);
+char **LerMatrizChar(char nomearq[], int linha, int coluna);
 
 /**
  * @brief Função que lê uma matriz de inteiros de um arquivo e imprime a matriz na tela.
@@ -116,11 +117,12 @@ void LerMatrizChar(char nomearq[], int linha, int coluna);
  * @param nomearq Nome do arquivo a ser lido.
  * @param linha Número de linhas da matriz.
  * @param coluna Número de colunas da matriz.
- *
+ * @return Retorna a matriz alocada dinamicamente
+ * 
  * @note A matriz é alocada dinamicamente.
  *
  */
-void LerMatrizInt(char nomearq[], int linha, int coluna);
+int **LerMatrizInt(char nomearq[], int linha, int coluna);
 
 /**
  * @brief Função que libera a memória alocada para uma matriz dinâmica.

@@ -148,7 +148,7 @@ void GerarMatrizEsparsa(int min, int max, int linha, int coluna, char nomearq[])
     fclose(matriz);
 }
 
-void LerMatrizChar(char nomearq[], int linha, int coluna)
+char **LerMatrizChar(char nomearq[], int linha, int coluna)
 {
     int i, j;
     FILE *matriz;
@@ -173,9 +173,10 @@ void LerMatrizChar(char nomearq[], int linha, int coluna)
         printf("\n");
     }
     fclose(matriz);
+    return mat;
 }
 
-void LerMatrizInt(char nomearq[], int linha, int coluna)
+int **LerMatrizInt(char nomearq[], int linha, int coluna)
 {
     int i, j;
     FILE *matriz;
@@ -200,6 +201,7 @@ void LerMatrizInt(char nomearq[], int linha, int coluna)
         printf("\n");
     }
     fclose(matriz);
+    return mat;
 }
 
 void LiberarMatriz(void **mat, int linha)
