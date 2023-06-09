@@ -29,6 +29,12 @@ float GerarNumeroFloat(int min, int max)
     return min + n * (max - min);
 }
 
+double GerarNumeroDouble(double min, double max)
+{
+    double scale = (double)rand() / RAND_MAX; // Obter um número aleatório no intervalo [0, 1]
+    return min + scale * (max - min);         // Ajustar para o intervalo desejado
+}
+
 int GerarNumeroInt(int min, int max)
 {
     int n = rand();

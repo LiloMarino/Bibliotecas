@@ -34,6 +34,14 @@ void GerarString(int n, char string[]);
 float GerarNumeroFloat(int min, int max);
 
 /**
+ * @brief Gera um número double aleatório dentro do intervalo determinado
+ * @param min Menor número que pode ser gerado
+ * @param max Maior número que pode ser gerado
+ * @return Retorna o número gerado
+ */
+double GerarNumeroDouble(double min, double max);
+
+/**
  * @brief Gera um número int aleatório dentro do intervalo determinado
  * @param min Menor número que pode ser gerado
  * @param max Maior número que pode ser gerado
