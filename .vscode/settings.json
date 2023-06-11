@@ -6,7 +6,9 @@
         "stddef.h": "c",
         "cmath": "c",
         "algorithm": "c",
-        "path.h": "c"
+        "path.h": "c",
+        "learquivo.h": "c",
+        "geradores.h": "c"
     },
     "makefile.launchConfigurations": [
         {
