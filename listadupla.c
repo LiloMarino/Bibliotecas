@@ -369,14 +369,14 @@ void killIterator(Iterador it)
 
 // A função "map" recebe uma lista "L" e um ponteiro para uma função "f" que será aplicada em cada elemento da lista.
 // Ela retorna uma nova lista com os elementos transformados pela função "f".
-Lista map(Lista L, Apply f)
+Lista map(Lista L, Apply f, void *aux)
 {
     Lista novaLista = createLst(((ListaInfo *)L)->capac);
     Iterador it = createIterador(L, false);
     while (!isIteratorEmpty(L, it))
     {
         Item item = getIteratorNext(L, it);
-        insertLst(novaLista, f(item));
+        insertLst(novaLista, f(item, aux));
     }
     killIterator(it);
     return novaLista;
@@ -385,14 +385,14 @@ Lista map(Lista L, Apply f)
 // A função "filter" é similar à função "map", porém seleciona apenas os elementos que satisfazem a condição imposta por "f".
 // Ela recebe uma Lista "L" e um ponteiro para uma função "f" que retorna true ou false.
 // A função retorna uma nova lista contendo apenas os itens que satisfazem a condição.
-Lista filter(Lista L, Check f, Posic p)
+Lista filter(Lista L, Check f, void *aux)
 {
     Lista novaLista = createLst(((ListaInfo *)L)->capac);
     Iterador it = createIterador(L, false);
     while (!isIteratorEmpty(L, it))
     {
         Item item = getIteratorNext(L, it);
-        if (f(item, p))
+        if (f(item, aux))
         {
             insertLst(novaLista, item);
         }

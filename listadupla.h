@@ -46,12 +46,12 @@ bool isEmptyLst(Lista L);
 bool isFullLst(Lista L);
 
 /**  Insere o item info no final da lista L. O comprimento da
-lista e' acrescido de 1 elemento. 
+lista e' acrescido de 1 elemento.
 Retorna um indicador para o elemento acrescentado; ou NIL, se a lista estiver
 cheia */
 Posic insertLst(Lista L, Item info);
 
-/** Remove e retorna o primeiro elemento da lista L. 
+/** Remove e retorna o primeiro elemento da lista L.
     A lista nao pode  estar vazia */
 Item popLst(Lista L);
 
@@ -64,14 +64,13 @@ Item getLst(Posic p);
 
 /** Insere o item info na posicao imediatamente anterior ao
 item indicado por p. O comprimento da lista e' acrescido de 1 elemento.
-Retorna um indicador para o elemento acrescentado. p deve indicar um 
+Retorna um indicador para o elemento acrescentado. p deve indicar um
 elemento existente em L.*/
-Posic insertBefore(Lista L,Posic p, Item info);
- 
+Posic insertBefore(Lista L, Posic p, Item info);
 
 /** Insere o item info na posicao imediatamente posterior ao
 item indicado por p. O comprimento da lista e' acrescido de 1 elemento.
-Retorna um indicador para o elemento acrescentado. p deve indicar um 
+Retorna um indicador para o elemento acrescentado. p deve indicar um
 elemento existente em L.*/
 Posic insertAfterLst(Lista L, Posic p, Item info);
 
@@ -133,20 +132,20 @@ void killIterator(Iterador it);
  ** High-order functions
  **/
 
-typedef Item (*Apply)(Item item);
-typedef bool (*Check)(Item item, Posic p);
+typedef Item (*Apply)(Item item, void *aux);
+typedef bool (*Check)(Item item, void *aux);
 typedef void (*ApplyClosure)(Item item, Clausura c);
 
 /** Cria uma nova lista. Aplica a funcao f a cada item de L
     e insere o resultado na nova lista.
  */
-Lista map(Lista L, Apply f);
+Lista map(Lista L, Apply f, void *aux);
 
 /**
    Cria uma nova lista contendo os itens de L para os quais a
    invocacao da funcao f retornar verdeira.
  */
-Lista filter(Lista L, Check f, Posic P);
+Lista filter(Lista L, Check f, void *aux);
 
 /**
    Aplica a funcao f a cada elemento de L, possivelmente, atualizando
