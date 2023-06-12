@@ -30,15 +30,14 @@ typedef struct StIterator IteratorInfo;
 
 Lista createLst(int capacidade)
 {
-    ListaInfo *lista = malloc(sizeof(ListaInfo));
-    lista->inicio = NULL;
-    lista->final = NULL;
-    lista->capac = capacidade;
-    lista->length = 0;
     if (capacidade < 0)
     {
-        lista->capac = CAPAC_ILIMITADA;
+        capacidade = CAPAC_ILIMITADA;
     }
+
+    ListaInfo *lista = calloc(1, sizeof(ListaInfo));
+    lista->capac = capacidade;
+
     return lista;
 }
 
@@ -50,13 +49,14 @@ int lengthLst(Lista L)
 
 int maxLengthLst(Lista L)
 {
-    if (((ListaInfo *)L)->capac == CAPAC_ILIMITADA)
+    ListaInfo *lista = (ListaInfo *)L;
+    if (lista->capac == CAPAC_ILIMITADA)
     {
         return -1;
     }
     else
     {
-        return ((ListaInfo *)L)->capac;
+        return lista->capac;
     }
 }
 
@@ -67,90 +67,91 @@ bool isEmptyLst(Lista L)
 
 bool isFullLst(Lista L)
 {
-    if (((ListaInfo *)L)->capac == CAPAC_ILIMITADA)
+    ListaInfo* lista = (ListaInfo*)L;
+    if (lista->capac == CAPAC_ILIMITADA)
     {
         return false;
     }
     else
     {
-        return ((ListaInfo *)L)->length == ((ListaInfo *)L)->capac;
+        return lista->length == lista->capac;
     }
 }
 
 Posic insertLst(Lista L, Item info)
 {
-    // Verifica se a lista está cheia
+    ListaInfo *lista = (ListaInfo *)L;
+
     if (isFullLst(L))
     {
-        return NIL;
+        return NIL; // Lista cheia, retorna NIL
+    }
+
+    ListaDupla *aux = calloc(1, sizeof(ListaDupla));
+    aux->info = info;
+
+    if (lista->inicio == NULL)
+    {
+        lista->inicio = aux; // Lista vazia, insere como o primeiro elemento
     }
     else
     {
-        ListaDupla *aux;
-        aux = malloc(sizeof(ListaDupla));
-        aux->info = info;
-        aux->prox = NULL;
-        aux->ant = NULL;
-
-        // Verifica se a lista está vazia
-        if (((ListaInfo *)L)->inicio == NULL)
-        {
-            ((ListaInfo *)L)->inicio = aux;
-        }
-        else
-        {
-            ListaDupla *p;
-            p = ((ListaInfo *)L)->final;
-            aux->ant = p;
-            p->prox = aux;
-        }
-        (((ListaInfo *)L)->length)++;
-        ((ListaInfo *)L)->final = aux;
-        return aux;
+        ListaDupla *p = lista->final;
+        aux->ant = p;
+        p->prox = aux;
     }
+
+    lista->final = aux;
+    lista->length++;
+
+    return aux;
 }
 
 Item popLst(Lista L)
 {
     ListaInfo *lista = (ListaInfo *)L;
-    // Verifica se a lista está vazia
+
     if (lista->inicio == NULL)
     {
         printf("Erro: Lista vazia\n");
         exit(1);
     }
+
     ListaDupla *aux = lista->inicio;
     lista->inicio = aux->prox;
+
     if (lista->inicio != NULL)
     {
-        lista->inicio->ant = NULL; // Se houver um segundo elemento na lista, atualiza o ponteiro ant do mesmo para NULL
+        lista->inicio->ant = NULL;
     }
     else
     {
-        lista->final = NULL; // Caso contrário, a lista ficou vazia e o ponteiro final também deve ser atualizado para NULL
+        lista->final = NULL;
     }
+
     Item item = aux->info;
     free(aux);
-    (lista->length)--;
+    lista->length--;
+
     return item;
 }
 
 void removeLst(Lista L, Posic p)
 {
-    ListaDupla *rmv;
-    rmv = (ListaDupla *)p;
+    ListaInfo *lista = (ListaInfo *)L;
+    ListaDupla *rmv = (ListaDupla *)p;
 
-    if (rmv == ((ListaInfo *)L)->inicio)
+    if (rmv == lista->inicio)
     {
         if (rmv->prox != NULL)
         {
-            ((ListaInfo *)L)->inicio = rmv->prox;
+            lista->inicio = rmv->prox;
             rmv->prox->ant = rmv->ant;
         }
         else
         {
-            ((ListaInfo *)L)->inicio = NULL;
-            ((ListaInfo *)L)->final = NULL; // Atualiza também o ponteiro final quando a lista fica vazia
+            lista->inicio = NULL;
+            lista->final = NULL; // Atualiza também o ponteiro final quando a lista fica vazia
         }
     }
     else if (rmv->prox != NULL)
@@ -161,10 +162,10 @@ void removeLst(Lista L, Posic p)
     else
     {
         rmv->ant->prox = NULL;
-        ((ListaInfo *)L)->final = rmv->ant; // Atualiza o ponteiro final quando o último elemento é removido
+        lista->final = rmv->ant; // Atualiza o ponteiro final quando o último elemento é removido
     }
 
-    (((ListaInfo *)L)->length)--;
+    (lista->length)--;
     free(rmv);
 }
 
@@ -285,24 +286,21 @@ Posic getPreviousLst(Lista L, Posic p)
 void killLst(Lista L)
 {
     ListaDupla *rmv, *p;
-    rmv = ((ListaInfo *)L)->inicio;
-    p = ((ListaInfo *)L)->inicio;
-    if (p != NULL)
+    ListaInfo *lista = (ListaInfo *)L;
+    
+    rmv = lista->inicio;
+    p = lista->inicio;
+    
+    while (p != NULL)
     {
-        while (p->prox != NULL)
-        {
-            p = p->prox;
-            free(rmv);
-            rmv = p;
-        }
-    }
-    if (rmv != NULL)
-    {
+        p = p->prox;
         free(rmv);
+        rmv = p;
     }
-    ((ListaInfo *)L)->inicio = NULL;
-    ((ListaInfo *)L)->final = NULL;
-    ((ListaInfo *)L)->length = 0;
+    
+    lista->inicio = NULL;
+    lista->final = NULL;
+    lista->length = 0;
     free(L);
 }
 
