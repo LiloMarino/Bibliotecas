@@ -140,7 +140,6 @@ void removeLst(Lista L, Posic p)
     ListaDupla *rmv;
     rmv = (ListaDupla *)p;
 
-    // Verifica se é o primeiro elemento da lista
     if (rmv == ((ListaInfo *)L)->inicio)
     {
         if (rmv->prox != NULL)
@@ -151,6 +150,7 @@ void removeLst(Lista L, Posic p)
         else
         {
             ((ListaInfo *)L)->inicio = NULL;
+            ((ListaInfo *)L)->final = NULL; // Atualiza também o ponteiro final quando a lista fica vazia
         }
     }
     else if (rmv->prox != NULL)
@@ -158,12 +158,12 @@ void removeLst(Lista L, Posic p)
         rmv->prox->ant = rmv->ant;
         rmv->ant->prox = rmv->prox;
     }
-
-    // Se for o último elemento da lista
-    if (rmv == ((ListaInfo *)L)->final)
+    else
     {
-        ((ListaInfo *)L)->final = rmv->ant;
+        rmv->ant->prox = NULL;
+        ((ListaInfo *)L)->final = rmv->ant; // Atualiza o ponteiro final quando o último elemento é removido
     }
+
     (((ListaInfo *)L)->length)--;
     free(rmv);
 }
