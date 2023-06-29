@@ -255,7 +255,7 @@ char *ConcatenaNomes(const char *NomeGeo, const char *NomeQry)
     }
 }
 
-void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, int argc, char **argv)
+void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, char **fator, int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
     {
@@ -278,6 +278,10 @@ void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, ch
         else if (strcmp("-ns", argv[i]) == 0 && i + 1 < argc)
         {
             *numSetor = argv[++i];
+        }
+        else if (strcmp("-fd", argv[i]) == 0 && i + 1 < argc)
+        {
+            *fator = argv[++i];
         }
     }
 }
