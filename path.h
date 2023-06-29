@@ -125,9 +125,10 @@ char *ConcatenaNomes(const char *NomeGeo, const char *NomeQry);
  * @param nomeGeo Nome do arquivo .geo
  * @param nomeQry Nome do arquivo .qry
  * @param numSetor Número de setores da árvore radial
+ * @param fator Fator de degradação da árvore radial
  * @param argc Argc
  * @param argv Argv
  */
-void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, int argc, char **argv);
+void ArgumentosDeComando(char **PathInput, char **PathOutput, char **nomeGeo, char **nomeQry, char **numSetor, char **fator, int argc, char **argv);
 
 #endif
