@@ -201,6 +201,24 @@ void normalizePath(const char *path, char **normPath)
     (*normPath)[pathLength] = '\0';
 }
 
+void ArrumaPath(char **PathInput, char **PathOutput)
+{
+    if (*PathInput[strlen(*PathInput) - 1] != '/')
+    {
+        char *PathInput1 = malloc(strlen(*PathInput) + 2);
+        strcpy(PathInput1, *PathInput);
+        strcat(PathInput1, "/");
+        *PathInput = PathInput1;
+    }
+    if (*PathOutput[strlen(*PathOutput) - 1] != '/')
+    {
+        char *PathOutput1 = malloc(strlen(*PathOutput) + 2);
+        strcpy(PathOutput1, *PathOutput);
+        strcat(PathOutput1, "/");
+        *PathOutput = PathOutput1;
+    }
+}
+
 char *RemoveExtensao(const char *fileName)
 {
     char *nomeArq = NULL;

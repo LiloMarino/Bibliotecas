@@ -104,6 +104,13 @@ char *getPath(const char *fullPath);
 void normalizePath(const char *path, char **normPath);
 
 /**
+ * @brief Arruma o Input e o Output adicionando a barra final
+ * @param PathInput Local onde contém os arquivos a serem lidos
+ * @param PathOutput Local onde será criado os arquivos de saída
+ */
+void ArrumaPath(char **PathInput, char **PathOutput);
+
+/**
  * @brief Remove a extensão de um arquivo por exemplo arq.geo -> arq
  * @param fileName Nome do arquivo com a extensão
  * @return Retorna o nome sem a extensão
