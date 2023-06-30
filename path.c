@@ -128,58 +128,53 @@ void joinAll(const char *path, const char *fileName, const char *ext, char **ful
     }
 }
 
-void getFileName(const char *fullPath, char **fileName)
+char* getFileName(const char* fullPath)
 {
     if (fullPath == NULL)
     {
-        return;
+        return NULL;
     }
 
-    if (*fileName != NULL)
-    {
-        free(*fileName);
-        *fileName = NULL;
-    }
-
-    char *ultimabarra = strrchr(fullPath, '/');
+    char* fileName = NULL;
+    char* ultimabarra = strrchr(fullPath, '/');
 
     if (ultimabarra == NULL)
     {
-        *fileName = my_strdup(fullPath);
+        fileName = strdup(fullPath);
     }
     else
     {
-        *fileName = my_strdup(ultimabarra + 1);
+        fileName = strdup(ultimabarra + 1);
     }
+
+    return fileName;
 }
 
-void getPath(const char *fullPath, char **path)
+char* getPath(const char* fullPath)
 {
     if (fullPath == NULL)
     {
-        return;
+        return NULL;
     }
 
-    if (*path != NULL)
-    {
-        free(*path);
-        *path = NULL;
-    }
-
-    char *ultimabarra = strrchr(fullPath, '/');
+    char* path = NULL;
+    char* ultimabarra = strrchr(fullPath, '/');
 
     if (ultimabarra != NULL)
     {
         int pathLength = ultimabarra - fullPath;
-        *path = malloc((pathLength + 1) * sizeof(char));
-        strncpy(*path, fullPath, pathLength);
-        (*path)[pathLength] = '\0';
+        path = malloc((pathLength + 1) * sizeof(char));
+        strncpy(path, fullPath, pathLength);
+        path[pathLength] = '\0';
     }
     else
     {
-        *path = my_strdup("");
+        path = strdup("");
     }
+
+    return path;
 }
+
 
 void normalizePath(const char *path, char **normPath)
 {

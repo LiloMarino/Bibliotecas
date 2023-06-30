@@ -79,7 +79,7 @@ void joinAll(const char *path, const char *fileName, const char *ext, char **ful
     "cc"              => "cc"
     ".txt"            => ".txt"
  */
-void getFileName(const char *fullPath, char **fileName);
+char *getFileName(const char *fullPath);
 
 /*
    Dado um caminho completo, retorna seu respectivo path.
@@ -90,7 +90,7 @@ void getFileName(const char *fullPath, char **fileName);
    "ccc.txt"          => ""
    "aaa/bbb/ccc"      => "aaa/bbb"
  */
-void getPath(const char *fullPath, char **path);
+char *getPath(const char *fullPath);
 
 /*
    Dado um caminho (path), (supostamente) sem nome de arquivo,
