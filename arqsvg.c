@@ -16,7 +16,7 @@ ArqSvg abreEscritaSvg(char *fn)
     {
         return NULL;
     }
-    fprintf(fsvg, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%%\" height=\"100%%\" viewBox=\"%d %d %d %d\">\n", SIZE_X1_Y1, SIZE_X1_Y1, SIZE_X2_Y2, SIZE_X2_Y2);
+    fprintf(fsvg, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%%\" height=\"100%%\" viewBox=\"%d %d %d %d\">\n", SIZE_X1, SIZE_Y1, SIZE_X2, SIZE_Y2);
     return fsvg;
 }
 
