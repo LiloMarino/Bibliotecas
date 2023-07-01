@@ -283,22 +283,30 @@ void CriaPasta(const char *diretorio, const char *nomePasta)
     }
 }
 
-void DeleteFile(FILE *file)
+void DeleteDuplicates(char nome[], char ext[])
 {
-    int fileDescriptor = fileno(file);
-    struct stat fileInfo;
+    // Cria o nome base do arquivo
+    char nomeBase[strlen(nome) + strlen(ext) + 2];
+    sprintf(nomeBase, "%s.%s", nome, ext);
 
-    if (fstat(fileDescriptor, &fileInfo) != -1)
+    // Verifica se o arquivo original existe
+    FILE *original = fopen(nomeBase, "r");
+    if (original == NULL)
     {
-        const char *fileName = fileInfo.st_name;
-
-        if (remove(fileName) == 0)
-        {
-            printf("Arquivo deletado com sucesso.\n");
-        }
-        else
-        {
-            printf("Erro ao deletar o arquivo.\n");
-        }
+        printf("Arquivo original não encontrado.\n");
+        return;
     }
+    fclose(original);
+
+    // Loop para deletar arquivos duplicados
+    int n = 2;
+    char nomeArq[strlen(nome) + strlen(ext) + 10];
+    sprintf(nomeArq, "%s-%d.%s", nome, n, ext);
+    while (remove(nomeArq) == 0)
+    {
+        n++;
+        sprintf(nomeArq, "%s-%d.%s", nome, n, ext);
+    }
+
+    printf("Arquivos duplicados deletados com sucesso.\n");
 }

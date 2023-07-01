@@ -168,9 +168,10 @@ FILE *CriaLog(char nome[], char ext[]);
 void CriaPasta(const char *diretorio, const char *nomePasta);
 
 /**
- * @brief Deleta um arquivo a partir de seu ponteiro
- * @param file Ponteiro para o arquivo a ser deletado
+ * @brief Semelhante a CriaLog, porém ela faz o processo reverso ela deleta todas as duplicadas existentes mantendo apenas o primeiro arquivo
+ * @param nome Nome base para o arquivo de log.
+ * @param ext Extensão do arquivo sem o .
  */
-void DeleteFile(FILE *file);
+void DeleteDuplicates(char nome[], char ext[]);
 
 #endif
