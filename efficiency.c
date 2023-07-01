@@ -17,16 +17,18 @@ double finalizarTempo()
 
     double segundos = (double)(tempo_fim.tv_sec - tempo_inicio.tv_sec) +
                       (double)(tempo_fim.tv_usec - tempo_inicio.tv_usec) / 1000000;
-
-    //printf("\nTempo total de execução: %lf segundos.\n", segundos);
+    #if ALLOW_PRINT == 1
+        printf("\nTempo total de execução: %lf segundos.\n", segundos);
+    #endif
     return segundos;
 }
 
 long double calcularMemoriaUtilizada()
 {
     getrusage(RUSAGE_SELF, &fim);
-
-    //printf("\nMemória utilizada: %ld bytes.\n", fim.ru_maxrss);
+    #if ALLOW_PRINT == 1
+        printf("\nMemória utilizada: %ld bytes.\n", fim.ru_maxrss);
+    #endif
     return fim.ru_maxrss;
 }
 
@@ -36,7 +38,8 @@ double calcularTempoCPU()
 
     double tempo_cpu = (double)(fim.ru_utime.tv_sec - inicio.ru_utime.tv_sec) +
                        (double)(fim.ru_utime.tv_usec - inicio.ru_utime.tv_usec) / 1000000;
-
-    //printf("\nTempo de CPU utilizado: %lf segundos.\n", tempo_cpu);
+    #if ALLOW_PRINT == 1
+        printf("\nTempo de CPU utilizado: %lf segundos.\n", tempo_cpu);
+    #endif
     return tempo_cpu;
 }
