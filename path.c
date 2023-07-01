@@ -128,15 +128,15 @@ void joinAll(const char *path, const char *fileName, const char *ext, char **ful
     }
 }
 
-char* getFileName(const char* fullPath)
+char *getFileName(const char *fullPath)
 {
     if (fullPath == NULL)
     {
         return NULL;
     }
 
-    char* fileName = NULL;
-    char* ultimabarra = strrchr(fullPath, '/');
+    char *fileName = NULL;
+    char *ultimabarra = strrchr(fullPath, '/');
 
     if (ultimabarra == NULL)
     {
@@ -150,15 +150,15 @@ char* getFileName(const char* fullPath)
     return fileName;
 }
 
-char* getPath(const char* fullPath)
+char *getPath(const char *fullPath)
 {
     if (fullPath == NULL)
     {
         return NULL;
     }
 
-    char* path = NULL;
-    char* ultimabarra = strrchr(fullPath, '/');
+    char *path = NULL;
+    char *ultimabarra = strrchr(fullPath, '/');
 
     if (ultimabarra != NULL)
     {
@@ -174,7 +174,6 @@ char* getPath(const char* fullPath)
 
     return path;
 }
-
 
 void normalizePath(const char *path, char **normPath)
 {
@@ -203,14 +202,14 @@ void normalizePath(const char *path, char **normPath)
 
 void ArrumaPath(char **PathInput, char **PathOutput)
 {
-    if (*PathInput[strlen(*PathInput) - 1] != '/')
+    if ((*PathInput)[strlen(*PathInput) - 1] != '/')
     {
         char *PathInput1 = malloc(strlen(*PathInput) + 2);
         strcpy(PathInput1, *PathInput);
         strcat(PathInput1, "/");
         *PathInput = PathInput1;
     }
-    if (*PathOutput[strlen(*PathOutput) - 1] != '/')
+    if ((*PathOutput)[strlen(*PathOutput) - 1] != '/')
     {
         char *PathOutput1 = malloc(strlen(*PathOutput) + 2);
         strcpy(PathOutput1, *PathOutput);
@@ -230,10 +229,10 @@ char *RemoveExtensao(const char *fileName)
     {
         // Calcula o tamanho do nome do arquivo sem a extensão
         size_t nomeArqLen = ultimoponto - fileName;
-        
+
         // Aloca memória para o novo nome do arquivo
         nomeArq = malloc((nomeArqLen + 1) * sizeof(char));
-        
+
         // Copia o nome do arquivo sem a extensão
         strncpy(nomeArq, fileName, nomeArqLen);
         nomeArq[nomeArqLen] = '\0';
