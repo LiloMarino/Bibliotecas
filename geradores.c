@@ -262,14 +262,15 @@ void CriaPasta(const char *diretorio, const char *nomePasta)
     strcat(caminhoCompleto, nomePasta);
 
     // Verifica se a pasta já existe
-    DIR* dir = opendir(caminhoCompleto);
-    if (dir != NULL) {
+    DIR *dir = opendir(caminhoCompleto);
+    if (dir != NULL)
+    {
         printf("A pasta já existe.\n");
         closedir(dir);
         return;
     }
 
-    // Cria a pasta com as permissões 0777 
+    // Cria a pasta com as permissões 0777
     int resultado = mkdir(caminhoCompleto, 0777);
 
     if (resultado == 0)
@@ -279,5 +280,25 @@ void CriaPasta(const char *diretorio, const char *nomePasta)
     else
     {
         printf("Erro ao criar a pasta.\n");
+    }
+}
+
+void DeleteFile(FILE *file)
+{
+    int fileDescriptor = fileno(file);
+    struct stat fileInfo;
+
+    if (fstat(fileDescriptor, &fileInfo) != -1)
+    {
+        const char *fileName = fileInfo.st_name;
+
+        if (remove(fileName) == 0)
+        {
+            printf("Arquivo deletado com sucesso.\n");
+        }
+        else
+        {
+            printf("Erro ao deletar o arquivo.\n");
+        }
     }
 }

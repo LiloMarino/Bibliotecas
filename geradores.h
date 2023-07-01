@@ -167,4 +167,10 @@ FILE *CriaLog(char nome[], char ext[]);
  */
 void CriaPasta(const char *diretorio, const char *nomePasta);
 
+/**
+ * @brief Deleta um arquivo a partir de seu ponteiro
+ * @param file Ponteiro para o arquivo a ser deletado
+ */
+void DeleteFile(FILE *file);
+
 #endif
