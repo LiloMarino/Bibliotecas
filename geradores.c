@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 #include <sys/stat.h>
+#include <dirent.h>
 
 unsigned int seed;
 
@@ -260,6 +261,15 @@ void CriaPasta(const char *diretorio, const char *nomePasta)
     strcat(caminhoCompleto, "/");
     strcat(caminhoCompleto, nomePasta);
 
+    // Verifica se a pasta já existe
+    DIR* dir = opendir(caminhoCompleto);
+    if (dir != NULL) {
+        printf("A pasta já existe.\n");
+        closedir(dir);
+        return;
+    }
+
+    // Cria a pasta com as permissões 0777 
     int resultado = mkdir(caminhoCompleto, 0777);
 
     if (resultado == 0)
