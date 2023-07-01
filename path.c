@@ -140,11 +140,11 @@ char* getFileName(const char* fullPath)
 
     if (ultimabarra == NULL)
     {
-        fileName = strdup(fullPath);
+        fileName = my_strdup(fullPath);
     }
     else
     {
-        fileName = strdup(ultimabarra + 1);
+        fileName = my_strdup(ultimabarra + 1);
     }
 
     return fileName;
@@ -169,7 +169,7 @@ char* getPath(const char* fullPath)
     }
     else
     {
-        path = strdup("");
+        path = my_strdup("");
     }
 
     return path;
