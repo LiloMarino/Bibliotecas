@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <sys/stat.h>
 
 unsigned int seed;
 
@@ -245,4 +246,28 @@ FILE *CriaLog(char nome[], char ext[])
     }
 
     return arq;
+}
+
+void CriaPasta(const char *diretorio, const char *nomePasta)
+{
+    char caminhoCompleto[strlen(diretorio) + strlen(nomePasta) + 10];
+
+    // Copia o diretório para o caminho completo
+    strncpy(caminhoCompleto, diretorio, sizeof(caminhoCompleto) - 1);
+    caminhoCompleto[sizeof(caminhoCompleto) - 1] = '\0';
+
+    // Concatena o nome da pasta ao caminho completo
+    strcat(caminhoCompleto, "/");
+    strcat(caminhoCompleto, nomePasta);
+
+    int resultado = mkdir(caminhoCompleto, 0777);
+
+    if (resultado == 0)
+    {
+        printf("Pasta criada com sucesso.\n");
+    }
+    else
+    {
+        printf("Erro ao criar a pasta.\n");
+    }
 }
