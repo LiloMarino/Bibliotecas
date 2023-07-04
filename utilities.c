@@ -1,6 +1,14 @@
 #include "utilities.h"
+#include "geradores.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+
+bool Chance(double Probabilidade)
+{
+    double Random = (double)rand() / RAND_MAX;
+    return Random < Probabilidade;
+}
 
 double GrausParaRadianos(double Graus)
 {

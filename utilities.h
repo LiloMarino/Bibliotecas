@@ -7,6 +7,13 @@
 #define PI 3.14159265358979323846
 
 /**
+ * @brief Dado uma chance X% a função tem X% de chance de retornar verdadeiro
+ * @param Probabilidade Probabilidade de retornar verdadeiro em Ex: 0,1 = 10% de chance
+ * @return Tem probabilidade% de chance de retornar verdadeiro
+ */
+bool Chance(double Probabilidade);
+
+/**
  * @brief Recebe um valor em Graus e o retorna em Radianos
  * @param Graus Ângulo em Graus
  * @return Ângulo em Radianos
