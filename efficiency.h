@@ -2,7 +2,7 @@
 #define EFFICIENCY_H
 
 #include <sys/resource.h>
-#define ALLOW_PRINT 1 /* 1 = True, 0 = False */
+#define ALLOW_PRINT 1 /* 1 = True, 0 = False, Define se printa no terminal as estatísticas */
 
 /**
  * @brief Função que inicia a contagem de tempo.
