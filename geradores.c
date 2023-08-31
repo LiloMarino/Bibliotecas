@@ -267,17 +267,22 @@ char *CriaLogNome(char nome[], char ext[], FILE **arq)
     }
 
     // Cria o arquivo com o nome gerado
-    if (*arq != NULL)
-    {
-        fclose(*arq);
-    }
     *arq = fopen(nomearq, "w");
     if (arq == NULL)
     {
         printf("Erro ao criar arquivo de log!\n");
     }
+    n--;
+    if (n == 1)
+    {
+        sprintf(nomearq, "%s", nome);
+    }
+    else
+    {
 
-    return nomearq;
+        sprintf(nomearq, "%s-%d", nome, n);
+    }
+    return strdup(nomearq);
 }
 
 void CriaPasta(const char *diretorio, const char *nomePasta)

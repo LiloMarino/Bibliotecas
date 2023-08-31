@@ -165,7 +165,15 @@ FILE *CriaLog(char nome[], char ext[]);
  * @param nome Nome base para o arquivo de log.
  * @param ext Extensão do arquivo sem o .
  * @param arq Endereço do ponteiro para o arquivo de log a ser criado.
- * @return Retorna o nome do arquivo
+ * @return Retorna o nome do último arquivo criado, caso não exista 
+ * um arquivo com o mesmo nome ele retorna o próprio nome do arquivo
+ * 
+ * @note A função adiciona a extensão ao nome do arquivo e verifica se já existe
+ * um arquivo com o mesmo nome. Se já existir, adiciona um número ao nome para evitar
+ * sobrescrever o arquivo existente. 
+ * 
+ * @warning É necessário fechar o arquivo com fclose() antes e 
+ * depois da execução da função caso esteja aberto
  */
 char *CriaLogNome(char nome[], char ext[], FILE **arq);
 
