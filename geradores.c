@@ -249,6 +249,37 @@ FILE *CriaLog(char nome[], char ext[])
     return arq;
 }
 
+char *CriaLogNome(char nome[], char ext[], FILE **arq)
+{
+    // Aloca memória para o nome do arquivo
+    char nomearq[strlen(nome) + 10 + strlen(ext)];
+    int n = 1;
+    sprintf(nomearq, "%s.%s", nome, ext);
+
+    // Verifica se o arquivo já existe
+    FILE *vrfy = fopen(nomearq, "r");
+    while (vrfy != NULL)
+    {
+        fclose(vrfy);
+        n++;
+        sprintf(nomearq, "%s-%d.%s", nome, n, ext);
+        vrfy = fopen(nomearq, "r");
+    }
+
+    // Cria o arquivo com o nome gerado
+    if (*arq != NULL)
+    {
+        fclose(*arq);
+    }
+    *arq = fopen(nomearq, "w");
+    if (arq == NULL)
+    {
+        printf("Erro ao criar arquivo de log!\n");
+    }
+
+    return nomearq;
+}
+
 void CriaPasta(const char *diretorio, const char *nomePasta)
 {
     char caminhoCompleto[strlen(diretorio) + strlen(nomePasta) + 10];

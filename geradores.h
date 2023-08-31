@@ -161,6 +161,15 @@ void LiberarMatriz(void **mat, int linha);
 FILE *CriaLog(char nome[], char ext[]);
 
 /**
+ * @brief Cria um arquivo de log com o nome especificado.
+ * @param nome Nome base para o arquivo de log.
+ * @param ext Extensão do arquivo sem o .
+ * @param arq Endereço do ponteiro para o arquivo de log a ser criado.
+ * @return Retorna o nome do arquivo
+ */
+char *CriaLogNome(char nome[], char ext[], FILE **arq);
+
+/**
  * @brief Cria uma pasta com o nomePasta no diretório especificado
  * @param diretorio Diretório onde a pasta será criada
  * @param nomePasta Nome da pasta a ser criada
