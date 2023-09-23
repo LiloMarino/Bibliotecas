@@ -323,7 +323,7 @@ Iterador createIterador(Lista L, bool reverso)
     return it;
 }
 
-bool isIteratorEmpty(Lista L, Iterador it)
+bool isIteratorEmpty(Iterador it)
 {
     if (it != NULL)
     {
@@ -371,7 +371,7 @@ Lista map(Lista L, Apply f, void *aux)
 {
     Lista novaLista = createLst(((ListaInfo *)L)->capac);
     Iterador it = createIterador(L, false);
-    while (!isIteratorEmpty(L, it))
+    while (!isIteratorEmpty(it))
     {
         Item item = getIteratorNext(L, it);
         insertLst(novaLista, f(item, aux));
@@ -387,7 +387,7 @@ Lista filter(Lista L, Check f, void *aux)
 {
     Lista novaLista = createLst(((ListaInfo *)L)->capac);
     Iterador it = createIterador(L, false);
-    while (!isIteratorEmpty(L, it))
+    while (!isIteratorEmpty(it))
     {
         Item item = getIteratorNext(L, it);
         if (f(item, aux))
@@ -404,7 +404,7 @@ Lista filter(Lista L, Check f, void *aux)
 void fold(Lista L, ApplyClosure f, Clausura c)
 {
     Iterador it = createIterador(L, false);
-    while (!isIteratorEmpty(L, it))
+    while (!isIteratorEmpty(it))
     {
         Item item = getIteratorNext(L, it);
         f(item, c);
