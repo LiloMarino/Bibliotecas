@@ -235,7 +235,7 @@ FILE *CriaLog(char nome[], char ext[])
     {
         fclose(vrfy);
         n++;
-        sprintf(nomearq, "%s-%d.%s", nome, n, ext);
+        sprintf(nomearq, "%s_%d.%s", nome, n, ext);
         vrfy = fopen(nomearq, "r");
     }
 
@@ -262,7 +262,7 @@ char *CriaLogNome(char nome[], char ext[], FILE **arq)
     {
         fclose(vrfy);
         n++;
-        sprintf(nomearq, "%s-%d.%s", nome, n, ext);
+        sprintf(nomearq, "%s_%d.%s", nome, n, ext);
         vrfy = fopen(nomearq, "r");
     }
 
@@ -280,7 +280,7 @@ char *CriaLogNome(char nome[], char ext[], FILE **arq)
     else
     {
 
-        sprintf(nomearq, "%s-%d", nome, n);
+        sprintf(nomearq, "%s_%d", nome, n);
     }
     return strdup(nomearq);
 }
@@ -337,11 +337,11 @@ void DeleteDuplicates(char nome[], char ext[])
     // Loop para deletar arquivos duplicados
     int n = 2;
     char nomeArq[strlen(nome) + strlen(ext) + 10];
-    sprintf(nomeArq, "%s-%d.%s", nome, n, ext);
+    sprintf(nomeArq, "%s_%d.%s", nome, n, ext);
     while (remove(nomeArq) == 0)
     {
         n++;
-        sprintf(nomeArq, "%s-%d.%s", nome, n, ext);
+        sprintf(nomeArq, "%s_%d.%s", nome, n, ext);
     }
 
     printf("Arquivos duplicados deletados com sucesso.\n");

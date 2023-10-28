@@ -130,8 +130,8 @@ void CriaPngDot(const char nome[])
         finalizarTempo();
 #endif
         n++;
-        sprintf(nomearq, "%s-%d.dot", nome, n);
-        sprintf(nomepng, "%s-%d.png", nome, n);
+        sprintf(nomearq, "%s_%d.dot", nome, n);
+        sprintf(nomepng, "%s_%d.png", nome, n);
         vrfy = fopen(nomearq, "r");
     }
 }
