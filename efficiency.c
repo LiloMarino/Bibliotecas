@@ -11,14 +11,14 @@ void iniciarTempo()
     gettimeofday(&tempo_inicio, NULL);
 }
 
-double finalizarTempo()
+long double finalizarTempo()
 {
     gettimeofday(&tempo_fim, NULL);
 
-    double segundos = (double)(tempo_fim.tv_sec - tempo_inicio.tv_sec) +
-                      (double)(tempo_fim.tv_usec - tempo_inicio.tv_usec) / 1000000;
+    long double segundos = (long double)(tempo_fim.tv_sec - tempo_inicio.tv_sec) +
+                          (long double)(tempo_fim.tv_usec - tempo_inicio.tv_usec) / 1000000.0L;
     #if ALLOW_PRINT == 1
-        printf("\nTempo total de execução: %lf segundos.\n", segundos);
+        printf("\nTempo total de execução: %Lf segundos.\n", segundos);
     #endif
     return segundos;
 }
@@ -32,14 +32,14 @@ long double calcularMemoriaUtilizada()
     return fim.ru_maxrss;
 }
 
-double calcularTempoCPU()
+long double calcularTempoCPU()
 {
     getrusage(RUSAGE_SELF, &fim);
 
-    double tempo_cpu = (double)(fim.ru_utime.tv_sec - inicio.ru_utime.tv_sec) +
-                       (double)(fim.ru_utime.tv_usec - inicio.ru_utime.tv_usec) / 1000000;
+    long double tempo_cpu = (long double)(fim.ru_utime.tv_sec - inicio.ru_utime.tv_sec) +
+                            (long double)(fim.ru_utime.tv_usec - inicio.ru_utime.tv_usec) / 1000000.0L;
     #if ALLOW_PRINT == 1
-        printf("\nTempo de CPU utilizado: %lf segundos.\n", tempo_cpu);
+        printf("\nTempo de CPU utilizado: %Lf segundos.\n", tempo_cpu);
     #endif
     return tempo_cpu;
 }

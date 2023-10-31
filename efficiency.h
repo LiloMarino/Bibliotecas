@@ -21,10 +21,10 @@ void iniciarTempo();
  * 
  * Esta função utiliza a função gettimeofday() para obter a hora atual do sistema. Ela subtrai a hora de início 
  * armazenada globalmente pela hora de término, calculando o tempo total de execução em segundos.
- * O tempo total é exibido na saída padrão e retornado como um valor double.
+ * O tempo total é exibido na saída padrão e retornado como um valor long double.
  * 
  */
-double finalizarTempo();
+long double finalizarTempo();
 
 /**
  * @brief Calcula a quantidade de memória utilizada pelo programa.
@@ -44,6 +44,6 @@ long double calcularMemoriaUtilizada();
  * @note Essa função utiliza a função getrusage() para obter informações sobre o uso de recursos do programa.
  * 
  */
-double calcularTempoCPU();
+long double calcularTempoCPU();
 
 #endif
